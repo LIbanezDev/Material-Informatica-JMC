@@ -99,7 +99,7 @@ class ProductoController extends Controller
      */
     public function edit($id)
     {
-        //
+
     }
 
     /**
@@ -122,7 +122,10 @@ class ProductoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $producto_a_eliminar = Producto::findOrFail($id);
+        $producto_a_eliminar->delete();
+
+        return redirect()->route('productos.index')->with('mensaje', 'Producto eliminado satisfactoriamente');
     }
 
 }

@@ -1,9 +1,11 @@
 @extends('layouts.app')
-
+@section('titulo')
+Inventario - {{$productos_detalles[0]->seccion}}
+@endsection
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-12 col-lg-3 p-2">
+        <div class="col-12 col-lg-2 p-2">
             <h2 class="text-center font-weight-bold">Secciones</h2>         
                 <ul class="list-group list-group-flush">          
                     @foreach($seccion_cantidad as $seccion => $cantidad)
@@ -17,7 +19,7 @@
                 </ul>
                 <a href="/productos/create"><button type = "button" class="btn btn-success">Crear nuevo producto</button></a> 
         </div>
-        <div class="col-12 col-lg-9">
+        <div class="col-12 col-lg-10">
             <div class="row">
                 @foreach($productos_detalles as $item)
                     <div class="col-sm-4">                       
