@@ -36,7 +36,7 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item active">
-                            <a class="nav-link" href="{{route(productos.index)}}">Revisa tu inventario</a>
+                            <a class="nav-link" href="{{route('productos.index')}}">Revisa tu inventario</a>
                         </li>
                         <li class="nav-item active">
                             <a class="nav-link" href="#">-</a>
