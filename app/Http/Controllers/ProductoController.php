@@ -111,7 +111,34 @@ class ProductoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'nombre' => 'required|min:5|max:100',
+            'descripcion' => 'required|min:10',
+            'precio' => 'required|integer|gte:10000',
+            'seccion' => 'required|min:4|max:100',
+        ]);
+
+        $nota_a_actualizar = Producto::findOrFail($id);
+        $nota_a_actualizar->nombre = $request->nombre;
+        $nota_a_actualizar->seccion = $request->seccion;
+        $nota_a_actualizar->descripcion = $request->descripcion;
+        $nota_a_actualizar->precio = $request->precio;
+
+
+        if($request->hasFile('imagen')){
+            $image_path = public_path().'/'.$nota_a_actualizar->imagen;
+            if (file_exists($image_path)) {    
+                @unlink($image_path);      
+            }
+            $file = $request->file('imagen');
+            $nombre = time().$file->getClientOriginalName();
+            $file->move(public_path().'/',$nombre);
+            $nota_a_actualizar->imagen = $nombre;
+        }
+        
+        $nota_a_actualizar->save();
+
+        return back()->with('mensaje', 'Producto Editado!');
     }
 
     /**
