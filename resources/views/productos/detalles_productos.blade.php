@@ -28,7 +28,8 @@
                                 <a href="/productos" class="btn btn btn-dark btn-sm">Volver a la lista...</a>
                             </div>
                             <div class="card-body">     
-                                <form action = "/productos" method = "POST" class = "mb-2" enctype="multipart/form-data">
+                                <form action = "{{route('productos.update', $productos_detalles->id)}}" method = "POST" class = "mb-2" enctype="multipart/form-data">
+                                @method('PUT')
                                 @csrf     
                                     <div class="text-center"> 
                                     <h1 class="display-4 mb-4">Editar producto</h1>
@@ -134,7 +135,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-success" data-dismiss="modal">Me arrepentí</button>
-                    <form action="/productos/{{$productos_detalles->id}}" method="POST">
+                    <form action="{{route('productos.destroy', $productos_detalles->id)}}" method="POST">
                         @method('DELETE')
                         @csrf
                         <button type="submit" class="btn btn-danger">Estoy seguro</button>

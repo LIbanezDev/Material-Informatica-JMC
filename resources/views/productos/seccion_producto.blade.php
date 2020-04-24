@@ -15,9 +15,9 @@ Inventario - {{$productos_detalles[0]->seccion}}
                         <a href="{{route('seccion', $seccion)}}" class="list-group-item list-group-item-action mb-3">- {{$seccion}} ({{$cantidad}})</a>
                         @endif
                     @endforeach
-                        <a href="/productos" class="list-group-item list-group-item-action mb-3">- Ver todos</a>
+                        <a href="{{route('productos.index')}}" class="list-group-item list-group-item-action mb-3">- Ver todos</a>
                 </ul>
-                <a href="/productos/create"><button type = "button" class="btn btn-success">Crear nuevo producto</button></a> 
+                <a href="{{route('productos.create')}}"><button type = "button" class="btn btn-success">Crear nuevo producto</button></a> 
         </div>
         <div class="col-12 col-lg-10">
             <div class="row">
