@@ -21,6 +21,5 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::resource('productos', 'ProductoController');
-Route::resource('asignaturas', 'AsignaturaController');
 Route::get('productos/categoria/{seccion}', 'HomeController@seccion')->name('seccion');
 
