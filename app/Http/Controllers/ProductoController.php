@@ -150,6 +150,10 @@ class ProductoController extends Controller
     public function destroy($id)
     {
         $producto_a_eliminar = Producto::findOrFail($id);
+        $image_path = public_path().'/'.$producto_a_eliminar->imagen;
+        if (file_exists($image_path)) {    
+            @unlink($image_path);      
+        }
         $producto_a_eliminar->delete();
 
         return redirect()->route('productos.index')->with('mensaje', 'Producto eliminado satisfactoriamente');
