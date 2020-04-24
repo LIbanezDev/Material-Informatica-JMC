@@ -36,10 +36,10 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item active">
-                            <a class="nav-link" href="/productos">Revisa tu inventario</a>
+                            <a class="nav-link" href="{{route(productos.index)}}">Revisa tu inventario</a>
                         </li>
                         <li class="nav-item active">
-                            <a class="nav-link" href="/asignaturas">Horario personalizado</a>
+                            <a class="nav-link" href="#">-</a>
                         </li>
                     </ul>
                     <!-- Right Side Of Navbar -->
