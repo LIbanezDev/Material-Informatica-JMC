@@ -22,4 +22,7 @@ Auth::routes();
 
 Route::resource('productos', 'ProductoController');
 Route::get('productos/categoria/{seccion}', 'HomeController@seccion')->name('seccion');
+Route::get('/diseño', function () {
+    return view('pruebas_diseño.index');
+});
 
