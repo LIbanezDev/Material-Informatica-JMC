@@ -16,7 +16,6 @@ class CreateAsignaturasTable extends Migration
         Schema::create('asignaturas', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nombre');           
-            $table->text('descripcion')->nullable();
             $table->string('imagen')->nullable();
             $table->integer('semestre');
             $table->timestamps();

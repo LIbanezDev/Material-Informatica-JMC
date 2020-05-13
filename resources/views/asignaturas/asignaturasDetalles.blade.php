@@ -15,22 +15,38 @@
     </ul>
   </div>
   <div class="col-8 border-dark">
-    <h1 class="display text-center">Lista de archivos de {{ $asignatura_detalles->nombre }}</h1>
+    <div class="text-center">
+      <h1 class="display">Lista de apuntes de {{ $asignatura_detalles->nombre }}</h1>
+      <div class="text-muted">
+        <h6>En construcción uwu</h6>
+      </div>
+    </div>
     @foreach($archivos_asignatura as $archivo)
-    <h2>
-      {{ $archivo->nombre }} 
-    </h2>   
-    <a href="{{ asset('archivosAsignaturas/'.$archivo->asignatura.'/'.$archivo->nombre) }}" download="{{ $archivo->nombre }}">
-      <button type="button" class="btn btn-success">
+
+    @if($archivo->formato == "png" or $archivo->formato == "jpg")
+      <a href="{{ asset('archivosAsignaturas/'.$archivo->asignatura.'/'.$archivo->nombre) }}" target="_blank"><img src="{{ asset('imagenes/icono_imagen.svg')}}" alt="" height="40" width="40"> {{ $archivo->nombre }} </a>
+      <a href="{{ asset('archivosAsignaturas/'.$archivo->asignatura.'/'.$archivo->nombre) }}" download="{{ $archivo->nombre }}">
+      <br>
+      <button type="button" class="btn btn-outline-dark mt-2 btn-sm">
         Descargar
       </button>
-    </a>   
-    <a href="{{ asset('archivosAsignaturas/'.$archivo->asignatura.'/'.$archivo->nombre) }}" target="_blank">
-      <button type="button" class="btn btn-success">
-        Vista previa
+    </a>
+    <hr>
+    @endif
+    @if($archivo->formato == "pdf")
+      <a href="{{ asset('archivosAsignaturas/'.$archivo->asignatura.'/'.$archivo->nombre) }}" target="_blank"><img src="{{ asset('imagenes/icono_pdf.svg')}}" alt="" height="40" width="40"> {{ $archivo->nombre }} </a>
+      <a href="{{ asset('archivosAsignaturas/'.$archivo->asignatura.'/'.$archivo->nombre) }}" download="{{ $archivo->nombre }}">
+      <br>
+      <button type="button" class="btn btn-outline-dark mt-2 btn-sm">
+        Descargar
       </button>
     </a>
+    <hr>
+    @endif      
     @endforeach
+    <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#staticBackdrop">
+      Subir Material
+    </button>
   </div>
 </div>
 @if(session('mensaje'))
@@ -41,9 +57,6 @@
       </button>
   </div>   
 @endif
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
-  Subir Archivo
-</button>
 
 <!-- Modal -->
 <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -94,7 +107,7 @@
                 <option>0</option>
               </select>
               <div class="text-muted">
-                <h6>Ej: Certamen 1 </h6>
+                <h6 class="mt-1">0 si es Apunte/Otro </h6>
               </div>
             </div>
           </div>
@@ -107,7 +120,7 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-dismiss="modal">Salir</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
           <button type="submit" class="btn btn-success">Subir Archivo</button>
         </div>
       </form>

@@ -37,6 +37,7 @@ return array(
     'App\\Providers\\RouteServiceProvider' => $baseDir . '/app/Providers/RouteServiceProvider.php',
     'App\\Semestre' => $baseDir . '/app/Semestre.php',
     'App\\User' => $baseDir . '/app/User.php',
+    'AsignaturasTableSeeder' => $baseDir . '/database/seeds/AsignaturasTableSeeder.php',
     'Asm89\\Stack\\Cors' => $vendorDir . '/asm89/stack-cors/src/Asm89/Stack/Cors.php',
     'Asm89\\Stack\\CorsService' => $vendorDir . '/asm89/stack-cors/src/Asm89/Stack/CorsService.php',
     'Brick\\Math\\BigDecimal' => $vendorDir . '/brick/math/src/BigDecimal.php',

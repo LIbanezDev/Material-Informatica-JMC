@@ -14,7 +14,12 @@ class CreateArchivosTable extends Migration
     public function up()
     {
         Schema::create('archivos', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
+            $table->string('nombre');           
+            $table->text('formato');
+            $table->string('tipo_evaluacion')->nullable();
+            $table->integer('semestre');
+            $table->integer('asignatura');
             $table->timestamps();
         });
     }

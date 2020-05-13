@@ -45,10 +45,14 @@ class ArchivoController extends Controller
         }else{
             return back()->with('mensaje', 'No adjuntaste archivo...');
         }
+        $data = $file->getClientOriginalName();    
+        $extension_archivo = substr($data, strpos($data, ".") + 1);    
         $archivo = new Archivo(); 
         $archivo->nombre = $nombre;
         $archivo->asignatura = $materia_del_archivo->id;
         $archivo->semestre = $request->semestre_asignatura;
+        $archivo->formato = $extension_archivo;
+        $archivo->tipo_evaluacion = $request->tipo_material;
         $archivo->save();
 
         return back()->with('mensaje', 'Archivo Agregado!');

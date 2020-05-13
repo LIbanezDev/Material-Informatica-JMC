@@ -60,7 +60,7 @@
         <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     <img src="{{ asset('Logo_UTFSM.png') }}" width="30" height="30" alt="">
-                    Universidad Técnica Federico Santa Maria
+                    USM Informática Material / Apuntes
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -69,9 +69,9 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item active">
+                        <!-- <li class="nav-item active">
                             <a class="nav-link" href="{{route('productos.index')}}">Revisa tu inventario</a>
-                        </li>
+                        </li> -->
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Asignaturas
@@ -90,7 +90,7 @@
                                         <a class="dropdown-item mouseOverAsignaturas" href="{{ route('asignaturas.show', 8)}}">Inglés II</a>
                                         <a class="dropdown-item mouseOverAsignaturas" href="{{ route('asignaturas.show', 14)}}">Inglés III</a>    
                                     </ul>                 
-                                </li>                                                              
+                                </li>                                                             
                                 <li class="dropdown-submenu">
                                     <a class="dropdown-item dropdown-toggle mouseOverSecciones" data-toggle="dropdown" href="#">
                                         Análisis y Diseño
@@ -121,7 +121,7 @@
                                         Arquitectura de Computadores
                                     </a>
                                     <ul class="dropdown-menu">
-                                        <a class="dropdown-item mouseOverAsignaturas" href="{{ route('asignaturas.show', 4)}}">Introducción a la Informática y Computación</a>
+                                        <a class="dropdown-item mouseOverAsignaturas" href="{{ route('asignaturas.show', 6)}}">Introducción a la Informática y Computación</a>
                                         <a class="dropdown-item mouseOverAsignaturas" href="{{ route('asignaturas.show', 18)}}">Arquitectura y organización de Computadores</a>
                                         <a class="dropdown-item mouseOverAsignaturas" href="{{ route('asignaturas.show', 23)}}">Sistemas Operativos</a>    
                                     </ul>

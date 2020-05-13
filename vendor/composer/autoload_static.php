@@ -496,6 +496,7 @@ class ComposerStaticInit19ae924285f567603469111095e826a4
         'App\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/app/Providers/RouteServiceProvider.php',
         'App\\Semestre' => __DIR__ . '/../..' . '/app/Semestre.php',
         'App\\User' => __DIR__ . '/../..' . '/app/User.php',
+        'AsignaturasTableSeeder' => __DIR__ . '/../..' . '/database/seeds/AsignaturasTableSeeder.php',
         'Asm89\\Stack\\Cors' => __DIR__ . '/..' . '/asm89/stack-cors/src/Asm89/Stack/Cors.php',
         'Asm89\\Stack\\CorsService' => __DIR__ . '/..' . '/asm89/stack-cors/src/Asm89/Stack/CorsService.php',
         'Brick\\Math\\BigDecimal' => __DIR__ . '/..' . '/brick/math/src/BigDecimal.php',
