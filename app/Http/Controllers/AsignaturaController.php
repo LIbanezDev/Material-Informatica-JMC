@@ -15,9 +15,23 @@ class AsignaturaController extends Controller
      */
     public function index()
     {
-        return view('asignaturas.asignaturasTodas');
+        $asignaturas_s1 = Asignatura::where('semestre', 1)->get();
+        $asignaturas_s2 = Asignatura::where('semestre', 2)->get();
+        $asignaturas_s3 = Asignatura::where('semestre', 3)->get();
+        $asignaturas_s4 = Asignatura::where('semestre', 4)->get();
+        $cantidad_archivos = array();
+        for($i = 1; $i <= 23; $i++){
+            $cantidad = Archivo::where('numero_asignatura', $i)->count();
+            $cantidad_archivos[$i] = $cantidad;
+        }
+        $semestre_asignatura = array(
+            1 => $asignaturas_s1,
+            2 => $asignaturas_s2,
+            3 => $asignaturas_s3,
+            4 => $asignaturas_s4,
+        );
+        return view('asignaturas.asignaturasTodas', compact('semestre_asignatura', 'cantidad_archivos'));
     }
-
     /**
      * Show the form for creating a new resource.
      *

@@ -8,9 +8,9 @@
 
     <title>@yield('titulo')</title>
     <link rel="shortcut icon" href="{{ asset('Logo_UTFSM.png') }}">
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ asset('assets/bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
-    <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
+    <link rel="stylesheet" href="{{ asset('assets/fonts/fontawesome-all.min.css') }}">
 </head>
 
 <body id="page-top">
@@ -23,9 +23,9 @@
                 </a>
                 <hr class="sidebar-divider my-0">
                 <ul class="nav navbar-nav text-light" id="accordionSidebar">
-                    <li class="nav-item" role="presentation"><a class="nav-link active" href="index.html"><i class="fas fa-book"></i><span>Asignaturas</span></a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="profile.html"><i class="fas fa-user"></i><span>Perfil</span></a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="table.html"><i class="fas fa-table"></i><span>Ranking Usuarios</span></a></li>                   
+                    <li class="nav-item" role="presentation"><a class="nav-link active" href="{{ route('asignaturas.index') }}"><i class="fas fa-book"></i><span>Asignaturas</span></a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="#"><i class="fas fa-user"></i><span>Perfil</span></a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="#"><i class="fas fa-table"></i><span>Ranking Usuarios</span></a></li>                   
                     @guest
                         <li class="nav-item" role="presentation"><a class="nav-link" href="{{ route('login') }}"><i class="far fa-user-circle"></i><span>Entrar</span></a></li>
                         @if (Route::has('register'))
@@ -62,15 +62,12 @@
                             <div class="d-none d-sm-block topbar-divider"></div>
                             @guest
                             <li class="nav-item dropdown no-arrow" role="presentation">
-                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#"><span class="d-none d-lg-inline mr-2 text-gray-600 small">Valerie Luna</span><img class="border rounded-circle img-profile" src="{{ asset('assets/img/avatars/avatar1.jpeg') }}"></a>
-                                    <div
-                                        class="dropdown-menu shadow dropdown-menu-right animated--grow-in" role="menu"><a class="dropdown-item" role="presentation" href="#"><i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Profile</a><a class="dropdown-item" role="presentation" href="#"><i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Settings</a>                                       
-                                            <div class="dropdown-divider"></div><a class="dropdown-item" role="presentation" href="#"><i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i></a></div>
+                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#"><span class="d-none d-lg-inline mr-2 text-gray-600 small">Invitado</span><img class="border rounded-circle img-profile" src="{{ asset('assets/img/avatars/avatar_default.jpg') }}"></a>                                   
                                 </div>
                             </li>
                             @else
                             <li class="nav-item dropdown no-arrow" role="presentation">
-                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#"><span class="d-none d-lg-inline mr-2 text-gray-600 small">{{ auth()->user()->name }}</span><img class="border rounded-circle img-profile" src="{{ asset('assets/img/avatars/avatar1.jpeg') }}"></a>
+                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#"><span class="d-none d-lg-inline mr-2 text-gray-600 small">{{ auth()->user()->name }}</span><img class="border rounded-circle img-profile" src="{{ asset('assets/img/avatars/avatar_default.jpg') }}"></a>
                                     <div
                                         class="dropdown-menu shadow dropdown-menu-right animated--grow-in" role="menu"><a class="dropdown-item" role="presentation" href="#"><i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Profile</a><a class="dropdown-item" role="presentation" href="#"><i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Settings</a>                                       
                                             <div class="dropdown-divider"></div><a class="dropdown-item" role="presentation" href="{{ route('logout') }}" onclick="event.preventDefault();

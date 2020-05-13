@@ -3,18 +3,9 @@
 {{ $asignatura_detalles->nombre }}
 @endsection
 @section('content')
-<div class="container">
 <!-- Button trigger modal -->
 <div class="row">
-  <div class="col-4 border">
-    <ul class="list-group list-group-flush">
-      <h2 class="text-center font-weight">Asignaturas</h2>          
-      @foreach($todas_las_asignaturas as $asignatura)
-          <a href="{{route('asignaturas.show', $asignatura->id )}}" class="list-group-item list-group-item-action mb-3">-{{ $asignatura->nombre }} </a>
-      @endforeach
-    </ul>
-  </div>
-  <div class="col-8 border-dark">
+  <div class="col border-dark justify-content-center">
     <div class="text-center">
       <h1 class="display">Lista de apuntes de {{ $asignatura_detalles->nombre }}</h1>
       <div class="text-muted">
@@ -127,6 +118,4 @@
     </div>
   </div>
 </div>
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 @endsection
