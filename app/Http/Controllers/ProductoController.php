@@ -61,10 +61,9 @@ class ProductoController extends Controller
         if($request->hasFile('imagen')){
             $file = $request->file('imagen');
             $nombre = time().$file->getClientOriginalName();
-            $file->move(public_path().'/',$nombre);
+            $file->move(public_path().'/imagenes/',$nombre);
         }else{
-            $nombre = 'default.png';
-            $file->move(public_path().'/',$nombre);
+            $nombre = 'default.jpg';
         } 
 
         $producto = new Producto(); 

@@ -12,7 +12,7 @@ Crear producto
                     <a href="{{route('productos.index')}}" class="btn btn btn-dark btn-sm">Volver a la lista...</a>
                 </div>
                 <div class="card-body">     
-                    <form action = "route('productos.store') " method = "POST" class = "mb-2" enctype="multipart/form-data">
+                    <form action = "{{ route('productos.store') }} " method = "POST" class = "mb-2" enctype="multipart/form-data">
                     @csrf     
                         <div class="text-center"> 
                         <h1 class="display-4 mb-4">Agregar producto</h1>
@@ -100,3 +100,4 @@ Crear producto
     </div>
 </div>
 @endsection
+

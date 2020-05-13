@@ -14,17 +14,11 @@ class CreateAsignaturasTable extends Migration
     public function up()
     {
         Schema::create('asignaturas', function (Blueprint $table) {
-            $table->id();
-            $table->string('nombre');
-            $table->string('sigla')->unique();
-            $table->integer('creditos');
-            $table->integer('horas_practicas');
-            $table->integer('horas_teoricas');
-            $table->integer('dia_bloque'); // formato "1-7:dia _ 1-17:bloque"
-            $table->string('profesor');     
-            $table->text('departamento');
+            $table->bigIncrements('id');
+            $table->string('nombre');           
+            $table->text('descripcion')->nullable();
+            $table->string('imagen')->nullable();
             $table->integer('semestre');
-            $table->string('imagen');
             $table->timestamps();
         });
     }

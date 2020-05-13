@@ -20,7 +20,7 @@ Inventario de {{Auth::user()->name}}
                 @foreach($productos as $item)
                     <div class="col-sm-4">                       
                         <div class="card" style="width: 18rem;">
-                            <img src="{{asset($item->imagen)}}" class="card-img-top" alt="..." height="200">
+                            <img src="{{asset('imagenes/'.$item->imagen)}}" class="card-img-top" alt="..." height="200">
                             <div class="card-body">
                                 <h5 class="card-title">{{$item->nombre}}</h5>
                                 <p class="card-text">{{$item->descripcion}}</p>
@@ -32,7 +32,13 @@ Inventario de {{Auth::user()->name}}
                 @endforeach               
             </div>                           
         </div>       
-    </div>  
+    </div>
+        <a href="{{asset('archivosAsignaturas/Programacion/guia2.pdf')}}" download="guia.pdf">
+        Descargar
+        </a> 
+        <a href="{{asset('archivosAsignaturas/Programacion/guia2.pdf')}}" target="_blank">
+        Vista previa
+        </a>
 </div>
 @endsection
 
