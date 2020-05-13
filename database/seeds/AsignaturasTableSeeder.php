@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\Asignatura;
+use App\Semestre;
 
 class AsignaturasTableSeeder extends Seeder
 {
@@ -12,9 +13,7 @@ class AsignaturasTableSeeder extends Seeder
      */
     public function run()
     {
-
-        Asignatura::truncate(); // Evita duplicar datos
-
+    
         $asignatura = new Asignatura();
         $asignatura->nombre = "Elementos de la Matemática";
         $asignatura->semestre = 1;

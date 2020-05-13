@@ -42,6 +42,13 @@ class AsignaturaController extends Controller
      */
     public function store(Request $request)
     {
+        // $request->validate([
+        //     'nombre' => 'required|min:5|max:100',
+        //     'descripcion' => 'required|min:10',
+        //     'precio' => 'required|integer|gte:10000',
+        //     'seccion' => 'required|min:4|max:100',
+        // ]);
+
         if($request->hasFile('imagen')){
             $file = $request->file('imagen');
             $nombre = time().$file->getClientOriginalName();
@@ -68,7 +75,7 @@ class AsignaturaController extends Controller
     public function show($id)
     {
         $asignatura_detalles = Asignatura::findOrFail($id);
-        $archivos_asignatura = Archivo::where('asignatura', $id)->get();
+        $archivos_asignatura = Archivo::where('numero_asignatura', $id)->get();
         $todas_las_asignaturas = Asignatura::all();
         return view('asignaturas.asignaturasDetalles', compact('asignatura_detalles', 'todas_las_asignaturas', 'archivos_asignatura'));
     }
@@ -104,6 +111,13 @@ class AsignaturaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        // $producto_a_eliminar = Producto::findOrFail($id);
+        // $image_path = public_path().'/'.$producto_a_eliminar->imagen;
+        // if (file_exists($image_path)) {    
+        //     @unlink($image_path);      
+        // }
+        // $producto_a_eliminar->delete();
+
+        // return redirect()->route('productos.index')->with('mensaje', 'Producto eliminado satisfactoriamente');
     }
 }

@@ -49,7 +49,7 @@ class ArchivoController extends Controller
         $extension_archivo = substr($data, strpos($data, ".") + 1);    
         $archivo = new Archivo(); 
         $archivo->nombre = $nombre;
-        $archivo->asignatura = $materia_del_archivo->id;
+        $archivo->numero_asignatura = $materia_del_archivo->id;
         $archivo->semestre = $request->semestre_asignatura;
         $archivo->formato = $extension_archivo;
         $archivo->tipo_evaluacion = $request->tipo_material;

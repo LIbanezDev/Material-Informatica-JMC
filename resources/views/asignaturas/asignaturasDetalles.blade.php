@@ -24,8 +24,8 @@
     @foreach($archivos_asignatura as $archivo)
 
     @if($archivo->formato == "png" or $archivo->formato == "jpg")
-      <a href="{{ asset('archivosAsignaturas/'.$archivo->asignatura.'/'.$archivo->nombre) }}" target="_blank"><img src="{{ asset('imagenes/icono_imagen.svg')}}" alt="" height="40" width="40"> {{ $archivo->nombre }} </a>
-      <a href="{{ asset('archivosAsignaturas/'.$archivo->asignatura.'/'.$archivo->nombre) }}" download="{{ $archivo->nombre }}">
+      <a href="{{ asset('archivosAsignaturas/'.$archivo->numero_asignatura.'/'.$archivo->nombre) }}" target="_blank"><img src="{{ asset('imagenes/icono_imagen.svg')}}" alt="" height="40" width="40"> {{ $archivo->nombre }} </a>
+      <a href="{{ asset('archivosAsignaturas/'.$archivo->numero_asignatura.'/'.$archivo->nombre) }}" download="{{ $archivo->nombre }}">
       <br>
       <button type="button" class="btn btn-outline-dark mt-2 btn-sm">
         Descargar
@@ -34,8 +34,8 @@
     <hr>
     @endif
     @if($archivo->formato == "pdf")
-      <a href="{{ asset('archivosAsignaturas/'.$archivo->asignatura.'/'.$archivo->nombre) }}" target="_blank"><img src="{{ asset('imagenes/icono_pdf.svg')}}" alt="" height="40" width="40"> {{ $archivo->nombre }} </a>
-      <a href="{{ asset('archivosAsignaturas/'.$archivo->asignatura.'/'.$archivo->nombre) }}" download="{{ $archivo->nombre }}">
+      <a href="{{ asset('archivosAsignaturas/'.$archivo->numero_asignatura.'/'.$archivo->nombre) }}" target="_blank"><img src="{{ asset('imagenes/icono_pdf.svg')}}" alt="" height="40" width="40"> {{ $archivo->nombre }} </a>
+      <a href="{{ asset('archivosAsignaturas/'.$archivo->numero_asignatura.'/'.$archivo->nombre) }}" download="{{ $archivo->nombre }}">
       <br>
       <button type="button" class="btn btn-outline-dark mt-2 btn-sm">
         Descargar

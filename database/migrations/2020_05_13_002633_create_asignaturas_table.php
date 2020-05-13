@@ -17,7 +17,7 @@ class CreateAsignaturasTable extends Migration
             $table->bigIncrements('id');
             $table->string('nombre');           
             $table->string('imagen')->nullable();
-            $table->integer('semestre');
+            $table->integer('semestre'); 
             $table->timestamps();
         });
     }

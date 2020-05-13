@@ -19,7 +19,8 @@ class CreateArchivosTable extends Migration
             $table->text('formato');
             $table->string('tipo_evaluacion')->nullable();
             $table->integer('semestre');
-            $table->integer('asignatura');
+            $table->unsignedBigInteger('numero_asignatura'); // Relación con categorias
+            $table->foreign('numero_asignatura')->references('id')->on('asignaturas'); // clave foranea
             $table->timestamps();
         });
     }

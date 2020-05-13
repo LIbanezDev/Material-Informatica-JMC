@@ -1,182 +1,102 @@
-<!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<!DOCTYPE html>
+<html>
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>@yield('titulo')</title>
     <link rel="shortcut icon" href="{{ asset('Logo_UTFSM.png') }}">
-
-
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
-    <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <style>
-        .dropdown-submenu{
-            position: relative;
-        }
-        .dropdown-submenu a::after{
-            transform: rotate(-90deg);
-            position: absolute;
-            right: 3px;
-            top: 40%;
-        }
-        .dropdown-submenu:hover .dropdown-menu, .dropdown-submenu:focus .dropdown-menu{
-            display: flex;
-            flex-direction: column;
-            position: absolute !important;
-            margin-top: -30px;
-            left: 100%;
-        }
-        @media (max-width: 992px) {
-            .dropdown-menu{
-                width: 50%;
-            }
-            .dropdown-menu .dropdown-submenu{
-                width: auto;
-            }
-        }
-        .mouseOverSecciones:hover{
-            background: #B2FF90;
-            color:black;
-        }
-        .mouseOverAsignaturas:hover{
-            background: #A8C2FF;
-            color: black;
-        }
-    </style>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
+    <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
 </head>
-<body>
-    <div id="app">
-        <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    <img src="{{ asset('Logo_UTFSM.png') }}" width="30" height="30" alt="">
-                    USM Informática Material / Apuntes
+
+<body id="page-top">
+    <div id="wrapper">
+        <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0">
+            <div class="container-fluid d-flex flex-column p-0">
+                <a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="#">
+                    <div class="sidebar-brand-icon"><i class="fas fa-university"></i></div>
+                    <div class="sidebar-brand-text mx-3"><span>Material USM</span></div>
                 </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
-                        <!-- <li class="nav-item active">
-                            <a class="nav-link" href="{{route('productos.index')}}">Revisa tu inventario</a>
-                        </li> -->
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Asignaturas
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <li class="dropdown-submenu">
-                                    <a class="dropdown-item dropdown-toggle mouseOverSecciones" data-toggle="dropdown" href="#">
-                                        Ciencias
-                                    </a>
-                                    <ul class="dropdown-menu">
-                                        <a class="dropdown-item mouseOverAsignaturas" href="{{ route('asignaturas.show', 1)}}">Elementos de la Matemática</a>
-                                        <a class="dropdown-item mouseOverAsignaturas" href="{{ route('asignaturas.show', 7)}}">Matemática Aplicada</a>
-                                        <a class="dropdown-item mouseOverAsignaturas" href="{{ route('asignaturas.show', 3)}}">Educación Física</a>
-                                        <a class="dropdown-item mouseOverAsignaturas" href="{{ route('asignaturas.show', 20)}}">Humanidades</a> 
-                                        <a class="dropdown-item mouseOverAsignaturas" href="{{ route('asignaturas.show', 2)}}">Inglés I</a>
-                                        <a class="dropdown-item mouseOverAsignaturas" href="{{ route('asignaturas.show', 8)}}">Inglés II</a>
-                                        <a class="dropdown-item mouseOverAsignaturas" href="{{ route('asignaturas.show', 14)}}">Inglés III</a>    
-                                    </ul>                 
-                                </li>                                                             
-                                <li class="dropdown-submenu">
-                                    <a class="dropdown-item dropdown-toggle mouseOverSecciones" data-toggle="dropdown" href="#">
-                                        Análisis y Diseño
-                                    </a>
-                                    <ul class="dropdown-menu">
-                                        <a class="dropdown-item mouseOverAsignaturas" href="{{ route('asignaturas.show', 4)}}">Análisis de Sistemas de Información</a>
-                                        <a class="dropdown-item mouseOverAsignaturas" href="{{ route('asignaturas.show', 10)}}">Diseño de Sistemas de Información</a>
-                                        <a class="dropdown-item mouseOverAsignaturas" href="{{ route('asignaturas.show', 9)}}">Análisis y Diseño Orientado a Objeto</a>
-                                        <a class="dropdown-item mouseOverAsignaturas" href="{{ route('asignaturas.show', 16)}}">Diseño y Programación Orientada a la Web</a>                                        
-                                    </ul>
-                                </li>
-                                <li class="dropdown-submenu">
-                                    <a class="dropdown-item dropdown-toggle mouseOverSecciones" data-toggle="dropdown" href="#">
-                                        Programación
-                                    </a>
-                                    <ul class="dropdown-menu">
-                                        <a class="dropdown-item mouseOverAsignaturas" href="{{ route('asignaturas.show', 5)}}">Programación</a>
-                                        <a class="dropdown-item mouseOverAsignaturas" href="{{ route('asignaturas.show', 11)}}">Estructuras de Datos</a>
-                                        <a class="dropdown-item mouseOverAsignaturas" href="{{ route('asignaturas.show', 12)}}">Programación Orientada a Evento</a>
-                                        <a class="dropdown-item mouseOverAsignaturas" href="{{ route('asignaturas.show', 15)}}">Programación Orientada a Objeto</a>
-                                        <a class="dropdown-item mouseOverAsignaturas" href="{{ route('asignaturas.show', 17)}}">Bases de Datos</a>
-                                        <a class="dropdown-item mouseOverAsignaturas" href="{{ route('asignaturas.show', 22)}}">Taller de desarrollo de Software</a>
-                                        <a class="dropdown-item mouseOverAsignaturas" href="{{ route('asignaturas.show', 21)}}">Desarrollo de Aplicaciones Móviles</a>
-                                    </ul>
-                                </li>
-                                <li class="dropdown-submenu">
-                                    <a class="dropdown-item dropdown-toggle mouseOverSecciones" data-toggle="dropdown" href="#">
-                                        Arquitectura de Computadores
-                                    </a>
-                                    <ul class="dropdown-menu">
-                                        <a class="dropdown-item mouseOverAsignaturas" href="{{ route('asignaturas.show', 6)}}">Introducción a la Informática y Computación</a>
-                                        <a class="dropdown-item mouseOverAsignaturas" href="{{ route('asignaturas.show', 18)}}">Arquitectura y organización de Computadores</a>
-                                        <a class="dropdown-item mouseOverAsignaturas" href="{{ route('asignaturas.show', 23)}}">Sistemas Operativos</a>    
-                                    </ul>
-                                </li>
-                                <li class="dropdown-submenu">
-                                    <a class="dropdown-item dropdown-toggle mouseOverSecciones" data-toggle="dropdown" href="#">
-                                        Talleres Sistemas de Info
-                                    </a>
-                                    <ul class="dropdown-menu">
-                                        <a class="dropdown-item mouseOverAsignaturas" href="{{ route('asignaturas.show', 13)}}">Taller de Sistemas de Información I</a>
-                                        <a class="dropdown-item mouseOverAsignaturas" href="{{ route('asignaturas.show', 19)}}">Taller de Sistemas de Información II</a>               
-                                    </ul>
-                                </li>
-                                <a class="dropdown-item mouseOverSecciones" href="{{ route('asignaturas.index') }}">Ver Todas</a>
-                            </ul>
-                        </li>
-                    </ul>                   
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}"> Ingresar </a>
-                            </li>
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}"> Registrarse </a>
-                                </li>
-                            @endif
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item mouseOverAsignaturas" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                        document.getElementById('logout-form').submit();">
-                                        Cerrar sesión
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
+                <hr class="sidebar-divider my-0">
+                <ul class="nav navbar-nav text-light" id="accordionSidebar">
+                    <li class="nav-item" role="presentation"><a class="nav-link active" href="index.html"><i class="fas fa-book"></i><span>Asignaturas</span></a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="profile.html"><i class="fas fa-user"></i><span>Perfil</span></a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="table.html"><i class="fas fa-table"></i><span>Ranking Usuarios</span></a></li>                   
+                    @guest
+                        <li class="nav-item" role="presentation"><a class="nav-link" href="{{ route('login') }}"><i class="far fa-user-circle"></i><span>Entrar</span></a></li>
+                        @if (Route::has('register'))
+                            <li class="nav-item" role="presentation"><a class="nav-link" href="{{ route('register') }}"><i class="fas fa-user-circle"></i><span>Registrarse</span></a></li>
+                        @endif
+                    @endguest                   
+                </ul>
+                <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
+            </div>
+        </nav>
+        <div class="d-flex flex-column" id="content-wrapper">
+            <div id="content">
+            <nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top">
+                    <div class="container-fluid"><button class="btn btn-link d-md-none rounded-circle mr-3" id="sidebarToggleTop" type="button"><i class="fas fa-bars"></i></button>
+                        <form class="form-inline d-none d-sm-inline-block mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                            <div class="input-group"><input class="bg-light form-control border-0 small" type="text" placeholder="Search for ...">
+                                <div class="input-group-append"><button class="btn btn-primary py-0" type="button"><i class="fas fa-search"></i></button></div>
+                            </div>
+                        </form>
+                        <ul class="nav navbar-nav flex-nowrap ml-auto">
+                            <li class="nav-item dropdown d-sm-none no-arrow"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#"><i class="fas fa-search"></i></a>
+                                <div class="dropdown-menu dropdown-menu-right p-3 animated--grow-in" role="menu" aria-labelledby="searchDropdown">
+                                    <form class="form-inline mr-auto navbar-search w-100">
+                                        <div class="input-group"><input class="bg-light form-control border-0 small" type="text" placeholder="Search for ...">
+                                            <div class="input-group-append"><button class="btn btn-primary py-0" type="button"><i class="fas fa-search"></i></button></div>
+                                        </div>
                                     </form>
                                 </div>
                             </li>
-                        @endguest
-                    </ul>
+                            <li class="nav-item dropdown no-arrow mx-1" role="presentation"></li>
+                            <li class="nav-item dropdown no-arrow mx-1" role="presentation">
+                                <div class="shadow dropdown-list dropdown-menu dropdown-menu-right" aria-labelledby="alertsDropdown"></div>
+                            </li>
+                            <div class="d-none d-sm-block topbar-divider"></div>
+                            @guest
+                            <li class="nav-item dropdown no-arrow" role="presentation">
+                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#"><span class="d-none d-lg-inline mr-2 text-gray-600 small">Valerie Luna</span><img class="border rounded-circle img-profile" src="{{ asset('assets/img/avatars/avatar1.jpeg') }}"></a>
+                                    <div
+                                        class="dropdown-menu shadow dropdown-menu-right animated--grow-in" role="menu"><a class="dropdown-item" role="presentation" href="#"><i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Profile</a><a class="dropdown-item" role="presentation" href="#"><i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Settings</a>                                       
+                                            <div class="dropdown-divider"></div><a class="dropdown-item" role="presentation" href="#"><i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i></a></div>
+                                </div>
+                            </li>
+                            @else
+                            <li class="nav-item dropdown no-arrow" role="presentation">
+                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#"><span class="d-none d-lg-inline mr-2 text-gray-600 small">{{ auth()->user()->name }}</span><img class="border rounded-circle img-profile" src="{{ asset('assets/img/avatars/avatar1.jpeg') }}"></a>
+                                    <div
+                                        class="dropdown-menu shadow dropdown-menu-right animated--grow-in" role="menu"><a class="dropdown-item" role="presentation" href="#"><i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Profile</a><a class="dropdown-item" role="presentation" href="#"><i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Settings</a>                                       
+                                            <div class="dropdown-divider"></div><a class="dropdown-item" role="presentation" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                            document.getElementById('logout-form').submit();"><i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Cerrar Sesión</a></div>                    
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                                @csrf
+                                            </form>
+                                </div>
+                            </li>
+                            @endguest
+                        </ul>
+            </div>
+            </nav>       
+                <div class="container-fluid">
+                    @yield('content')
                 </div>
-        </nav>
-
-        <main class="py-4">
-            @yield('content')
-        </main>
-    </div> 
+            </div>
+        <footer class="bg-white sticky-footer">
+            <div class="container my-auto">
+                <div class="text-center my-auto copyright"><span>Copyright © material_usm 2020</span></div>
+            </div>
+        </footer>
+    </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a></div>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
+    <script src="assets/js/theme.js"></script>
 </body>
 </html>
