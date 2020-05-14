@@ -57,28 +57,45 @@ Perfil {{ auth()->user()->name }}
                                 </div>
                                 <div class="card shadow">
                                     <div class="card-header py-3 justify-content-center">
-                                        <p class="text-primary m-0 font-weight-bold">Mis Asignaturas</p>
+                                        <p class="text-primary m-0 font-weight-bold">Mis Favoritos</p>
                                     </div>
                                     <div class="card-body">
                                         <div class="row"> 
-                                            @for($i = 0; $i < 6; $i++)                                    
-                                            <div class="col-md col-xl-6 mb-1">
+                                            @if($asignaturas_favoritas_detalles)
+                                            @foreach($asignaturas_favoritas_detalles as $asignaturas_fav)                                    
+                                            <div class="col-md col-xl-6 mb-2">
                                                 <div class="card shadow border-left-success">
                                                     <div class="card-body">
                                                         <div class="row align-items-center no-gutters">
                                                             <div class="col mr-2">
                                                                 <div class="text-uppercase text-primary font-weight-bold text-xs mb-1"><span></span></div>
-                                                                <div class="text-dark font-weight-bold h5 mb-0"><span> text de prueba sdasdasdasdasdasda </span></div>
-                                                                
+                                                                <div class="text-dark font-weight-bold h5 mb-0">
+                                                                <a href="{{ route('asignaturas.show', $asignaturas_fav->id )}}">
+                                                                    <span> 
+                                                                        {{ $asignaturas_fav->nombre }}       
+                                                                    </span>
+                                                                </a>
+                                                                </div>            
                                                             </div>
-                                                            <div class="col-auto"><a class="btn btn-danger btn-circle ml-1" role="button"><i class="fas fa-trash text-white"></i></a></div>
+                                                            <div class="col-auto"><a class="btn btn-danger btn-circle ml-1" role="button" href="{{ route('deleteFavorito', ['id_asignatura' => $asignaturas_fav->id, 'id_user' => auth()->user()->id ]) }}"><i class="fas fa-trash text-white"></i></a></div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            @endfor
+                                            @endforeach
+                                            @else
+                                                <h2 class="display"> Agrega favoritos en la lista de asignaturas!</h2>
+                                            @endif
                                         </div> 
-                                    </div>
+                                        @if(session('message'))
+                                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                            <strong> {{ session('message')}} </strong>
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        @endif
+                                    </div>           
                                 </div>
                             </div>
                         </div>

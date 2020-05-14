@@ -4,12 +4,37 @@ Asignaturas T.U en Informática
 @endsection
 @section('content')
 <div class="container-fluid">
+                @if(session('message'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <strong> {{ session('message')}} </strong>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                @endif
+                @if(session('message_err1'))
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <strong> {{ session('message_err1')}} </strong>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                @endif
+                @if(session('message_err2'))
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <strong> {{ session('message_err2')}} </strong>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                @endif
                 <div class="d-sm-flex justify-content-between align-items-center mt-2 mb-2">
                 <h5 class="text-dark mb-0">Primer Semestre</h5>
-                <a class="btn btn-success btn-sm d-sm-inline-block text-body" role="button" data-toggle="modal" data-target="#staticBackdrop">
-                    <i class="fas fa-file-upload fa-sm text-white"></i>
-                    &nbsp;Subir Material
-                </a>
+                <button type="button" class="btn btn-dark btn-sm" data-toggle="modal" data-target="#staticBackdrop">
+                    <i class="fas fa-plus text-white">
+                    </i>
+                    Subir Material
+                </button>
                 </div>   
                 <div class="row">
                     @foreach($semestre_asignatura[1] as $asignatura)
@@ -19,10 +44,24 @@ Asignaturas T.U en Informática
                                 <div class="row align-items-center no-gutters">
                                     <div class="col mr-2">
                                         <div class="text-uppercase text-primary font-weight-bold text-xs mb-1"><span></span></div>
-                                        <div class="text-dark font-weight-bold h5 mb-0"><span>{{ $asignatura->nombre }} ({{ $cantidad_archivos[$asignatura->id] }}) </span></div>
-                                        
+                                        <div class="text-dark font-weight-bold h5 mb-0">
+                                            <a href="{{ route('asignaturas.show', $asignatura->id )}}" target="_blank">    
+                                                <span>
+                                                    {{ $asignatura->nombre }} ({{ $cantidad_archivos[$asignatura->id] }})                                  
+                                                </span>
+                                            </a> 
+                                        </div>         
                                     </div>
-                                    <div class="col-auto"><a href="{{ route('asignaturas.show', $asignatura->id )}}"><i class="fas fa-arrow-right fa-2x text-gray-500"></i></a></div>
+                                    <div class="col-auto"> 
+                                    @if(Auth::check())                    
+                                        <button type="button" class="btn btn-success btn-circle ml-1" data-toggle="tooltip" data-placement="top" title="Agregar a favoritos">    
+                                                <a href="{{ route('addFavorito', ['id_asignatura' => $asignatura->id, 'id_user' => auth()->user()->id ]) }}">
+                                                    <i class="fas fa-plus text-white">
+                                                    </i>
+                                                </a>          
+                                        </button>
+                                        @endif                  
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -39,10 +78,26 @@ Asignaturas T.U en Informática
                                 <div class="row align-items-center no-gutters">
                                     <div class="col mr-2">
                                         <div class="text-uppercase text-primary font-weight-bold text-xs mb-1"><span></span></div>
-                                        <div class="text-dark font-weight-bold h5 mb-0"><span>{{ $asignatura->nombre }} ({{ $cantidad_archivos[$asignatura->id] }}) </span></div>
+                                        <div class="text-dark font-weight-bold h5 mb-0">
+                                            <a href="{{ route('asignaturas.show', $asignatura->id )}}" target="_blank">
+                                                <span>
+                                                    {{ $asignatura->nombre }} ({{ $cantidad_archivos[$asignatura->id] }}) 
+                                                </span>
+                                            </a>    
+                                        </div>
                                         
                                     </div>
-                                    <div class="col-auto"><a href="{{ route('asignaturas.show', $asignatura->id )}}"><i class="fas fa-arrow-right fa-2x text-gray-500"></i></a></div>
+                                    <div class="col-auto"> 
+                                        @if(Auth::check())                                                           
+                                        <button type="button" class="btn btn-primary btn-circle ml-1" data-toggle="tooltip" data-placement="top" title="Agregar a favoritos">
+                                            <a href="{{ route('addFavorito', ['id_asignatura' => $asignatura->id, 'id_user' => auth()->user()->id ]) }}">
+                                                <i class="fas fa-plus text-white">
+                                                </i>
+                                            </a>          
+                                        </button> 
+                                        @endif
+                                        </a>     
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -58,11 +113,26 @@ Asignaturas T.U en Informática
                             <div class="card-body">
                                 <div class="row align-items-center no-gutters">
                                     <div class="col mr-2">
-                                        <div class="text-uppercase text-primary font-weight-bold text-xs mb-1"><span></span></div>
-                                        <div class="text-dark font-weight-bold h5 mb-0"><span>{{ $asignatura->nombre }} ({{ $cantidad_archivos[$asignatura->id] }})</span></div>
+                                        <div class="text-uppercase text-danger font-weight-bold text-xs mb-1"><span></span></div>
+                                        <div class="text-dark font-weight-bold h5 mb-0">
+                                        <a href="{{ route('asignaturas.show', $asignatura->id )}}" target="_blank">
+                                            <span>
+                                                {{ $asignatura->nombre }} ({{ $cantidad_archivos[$asignatura->id] }})
+                                            </span>
+                                        </a>
+                                    </div>
                                         
                                     </div>
-                                    <div class="col-auto"><a href="{{ route('asignaturas.show', $asignatura->id )}}"><i class="fas fa-arrow-right fa-2x text-gray-500"></i></a></div>
+                                    <div class="col-auto">  
+                                        @if(Auth::check())                   
+                                        <button type="button" class="btn btn-danger btn-circle ml-1" data-toggle="tooltip" data-placement="top" title="Agregar a favoritos">
+                                            <a href="{{ route('addFavorito', ['id_asignatura' => $asignatura->id, 'id_user' => auth()->user()->id ]) }}">
+                                                <i class="fas fa-plus text-white">
+                                                </i>
+                                            </a>                                           
+                                        </button> 
+                                        @endif    
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -79,10 +149,23 @@ Asignaturas T.U en Informática
                                 <div class="row align-items-center no-gutters">
                                     <div class="col mr-2">
                                         <div class="text-uppercase text-primary font-weight-bold text-xs mb-1"><span></span></div>
-                                        <div class="text-dark font-weight-bold h5 mb-0"><span>{{ $asignatura->nombre }} ({{ $cantidad_archivos[$asignatura->id] }})</span></div>
-                                        
+                                        <div class="text-dark font-weight-bold h5 mb-0">
+                                        <a href="{{ route('asignaturas.show', $asignatura->id )}}" target="_blank">
+                                            <span>{{ $asignatura->nombre }} ({{ $cantidad_archivos[$asignatura->id] }})</span>
+                                        </a>
                                     </div>
-                                    <div class="col-auto"><a href="{{ route('asignaturas.show', $asignatura->id )}}"><i class="fas fa-arrow-right fa-2x text-gray-500"></i></a></div>
+                                        
+                                    </div>                                   
+                                    <div class="col-auto">                      
+                                        @if(Auth::check())
+                                        <button type="button" class="btn btn-warning btn-circle ml-1" data-toggle="tooltip" data-placement="top" title="Agregar a favoritos">                                           
+                                            <a href="{{ route('addFavorito', ['id_asignatura' => $asignatura->id, 'id_user' => auth()->user()->id ]) }}">
+                                                <i class="fas fa-plus text-white">
+                                                </i>
+                                            </a>
+                                        </button>
+                                        @endif             
+                                    </div>
                                 </div>
                             </div>
                         </div>

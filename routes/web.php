@@ -15,9 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-})->name('inicio');
+Route::get('/', 'HomeController@perfil')->name('inicio');
 
 Auth::routes();
 
@@ -26,4 +24,6 @@ Route::resource('archivos', 'ArchivoController');
 
 Route::get('/perfil', 'HomeController@perfil')->name('perfil');
 Route::get('/ranking', 'HomeController@ranking')->name('ranking');
+Route::get('/addFavorito/{id_asignatura}/{id_user}', 'HomeController@addFavorito')->name('addFavorito');
+Route::get('/deleteFavorito/{id_asignatura}/{id_user}', 'HomeController@deleteFavorito')->name('deleteFavorito');
 

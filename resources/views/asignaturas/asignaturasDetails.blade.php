@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('titulo')
-Hola
+{{ $asignatura_detalles->nombre }} | Material
 @endsection
 @section('content')
 <div class="container">
@@ -115,7 +115,13 @@ Hola
     </div>
   </div>
 </div>
-
+<hr>
+<a class="btn btn-danger btn-icon-split" role="button" href="{{ redirect()->back()->getTargetUrl() }}">
+  <span class="text-white icon">
+    <i class="fas fa-arrow-left"></i>
+  </span>
+  <span class="text-white text"> Volver Atrás </span>
+</a>
 
 
 

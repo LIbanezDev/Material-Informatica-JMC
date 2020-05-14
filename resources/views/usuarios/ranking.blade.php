@@ -22,9 +22,18 @@ Ranking de colaboradores
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach($usuarios_ranking as $user)
+                                    @foreach($usuarios_ranking as $user)                                  
                                     <tr>
-                                        <td><strong> 1. <img class="rounded-circle mr-2" width="30" height="30" src="{{asset('imgsPerfil/'.$user->imagen) }}">{{ $user->name }}</strong></td>
+                                        <td>
+                                            <strong>
+                                                @if(isset($_GET['page']) && $_GET['page'] > 1) 
+                                                {{ $iterador++ }}.  
+                                                @else
+                                                {{ $iterador++ }}. 
+                                                @endif
+                                                <img class="rounded-circle mr-2" width="30" height="30" src="{{asset('imgsPerfil/'.$user->imagen) }}">{{ $user->name }}                                              
+                                            </strong>
+                                        </td>
                                         <td>{{ $user->puntos  }}</td>
                                         <td>{{ $user->certamenes }}</td>
                                         <td>{{ $user->laboratorios }}</td>
@@ -47,17 +56,17 @@ Ranking de colaboradores
                         </div>
                         <div class="row">
                             <div class="col-md-6 align-self-center">
-                                <p id="dataTable_info" class="dataTables_info" role="status" aria-live="polite">Mostrando 1 to 1 of {{ $cantidad }}</p>
+                                <p id="dataTable_info" class="dataTables_info" role="status" aria-live="polite">Mostrando  
+                                    @if(isset($_GET['page']))
+                                    {{ $paginacion * $_GET['page'] }}
+                                    @else
+                                    {{ $paginacion }}
+                                    @endif
+                                    de {{ $cantidad }}</p>
                             </div>
                             <div class="col-md-6">
                                 <nav class="d-lg-flex justify-content-lg-end dataTables_paginate paging_simple_numbers">
-                                    <ul class="pagination">
-                                        <li class="page-item disabled"><a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
-                                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                        <li class="page-item"><a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
-                                    </ul>
+                                    {{ $usuarios_ranking->links() }}
                                 </nav>
                             </div>
                         </div>
