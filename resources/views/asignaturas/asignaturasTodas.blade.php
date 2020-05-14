@@ -96,21 +96,21 @@ Asignaturas T.U en Informática
                                 <h6 class="text-primary font-weight-bold m-0">Tipo de material subido</h6>
                             </div>
                             <div class="card-body">
-                                <h4 class="small font-weight-bold">Certamenes<span class="float-right">20%</span></h4>
+                                <h4 class="small font-weight-bold">Certamenes<span class="float-right" id="cert_porcentaje"></span></h4>
                                 <div class="progress mb-2">
-                                    <div class="progress-bar bg-danger" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%;"><span class="sr-only">20%</span></div>
+                                    <div class="progress-bar bg-danger" id = "cert" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%;"><span class="sr-only"></span></div>
                                 </div>
-                                <h4 class="small font-weight-bold">Laboratorios<span class="float-right">40%</span></h4>
+                                <h4 class="small font-weight-bold">Laboratorios<span class="float-right" id="lab_porcentaje"></span></h4>
                                 <div class="progress mb-2">
-                                    <div class="progress-bar bg-warning" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%;"><span class="sr-only">40%</span></div>
+                                    <div class="progress-bar bg-warning" id = "lab" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%;"><span class="sr-only"></span></div>
                                 </div>
-                                <h4 class="small font-weight-bold">Controles<span class="float-right">60%</span></h4>
+                                <h4 class="small font-weight-bold">Controles<span class="float-right" id="ctrl_porcentaje"></span></h4>
                                 <div class="progress mb-2">
-                                    <div class="progress-bar bg-primary" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"><span class="sr-only">60%</span></div>
+                                    <div class="progress-bar bg-primary" id = "ctrl" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"><span class="sr-only"></span></div>
                                 </div>
-                                <h4 class="small font-weight-bold">Otro<span class="float-right">80%</span></h4>
+                                <h4 class="small font-weight-bold">Otro<span class="float-right" id="otr_porcentaje"></span></h4>
                                 <div class="progress mb-2">
-                                    <div class="progress-bar bg-info" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%;"><span class="sr-only">80%</span></div>
+                                    <div class="progress-bar bg-info" id = "otr" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%;"><span class="sr-only"></span></div>
                                 </div>
                             </div>
                         </div>
@@ -236,6 +236,29 @@ Asignaturas T.U en Informática
                         </div>
                     </div>
                 </div>
-</div>  
+</div> 
+<script>
+    var certamenes, labs, controles, otros;
+    certamenes = parseInt('<?php echo $cantidad_material['certamenes'] ?>', 10);
+    labs= parseInt('<?php echo $cantidad_material['laboratorios'] ?>', 10);
+    controles=parseInt('<?php echo $cantidad_material['controles'] ?>', 10);
+    otros=parseInt('<?php echo $cantidad_material['otros'] ?>', 10);
+    
+    var sumaTotal = certamenes + labs + controles + otros;
+    certamenes = Math.round((certamenes / sumaTotal) * 100);
+    labs = Math.round((labs / sumaTotal) * 100);
+    controles = Math.round((controles / sumaTotal) * 100);
+    otros = Math.round((otros / sumaTotal) * 100);
+
+    document.getElementById('cert').style.width = certamenes+'%';
+    document.getElementById('lab').style.width = labs+'%';
+    document.getElementById('ctrl').style.width = controles+'%';
+    document.getElementById('otr').style.width = otros+'%';
+
+    document.getElementById('cert_porcentaje').innerHTML = certamenes+'%';
+    document.getElementById('lab_porcentaje').innerHTML = labs+'%';
+    document.getElementById('ctrl_porcentaje').innerHTML = controles+'%';
+    document.getElementById('otr_porcentaje').innerHTML = otros+'%';
+</script>  
 @endsection
 

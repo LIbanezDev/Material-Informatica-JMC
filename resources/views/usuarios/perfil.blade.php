@@ -15,21 +15,21 @@ Perfil {{ auth()->user()->name }}
                                 <h6 class="text-primary font-weight-bold m-0">Mis Contribuciones</h6>
                             </div>
                             <div class="card-body">
-                                <h4 class="small font-weight-bold">Certamenes<span class="float-right">0%</span></h4>
+                                <h4 class="small font-weight-bold">Certamenes<span class="float-right">{{ $usuario_info->certamenes }}</span></h4>
                                 <div class="progress progress-sm mb-3">
-                                    <div class="progress-bar bg-danger" aria-valuenow="5" aria-valuemin="0" aria-valuemax="100" style="width: 5%;"><span class="sr-only">20%</span></div>
+                                    <div class="progress-bar bg-danger" id = "certamenes" aria-valuenow="5" aria-valuemin="0" aria-valuemax="100" style="width: 5%;"><span class="sr-only">23%</span></div>
                                 </div>
-                                <h4 class="small font-weight-bold">Laboratorios<span class="float-right">0%</span></h4>
+                                <h4 class="small font-weight-bold">Laboratorios<span class="float-right">{{ $usuario_info->laboratorios }}</span></h4>
                                 <div class="progress progress-sm mb-3">
-                                    <div class="progress-bar bg-warning" aria-valuenow="5" aria-valuemin="0" aria-valuemax="100" style="width: 5%;"><span class="sr-only">0%</span></div>
+                                    <div class="progress-bar bg-warning" id = "laboratorios" aria-valuenow="5" aria-valuemin="0" aria-valuemax="100" style="width: 5%;"><span class="sr-only">0%</span></div>
                                 </div>
-                                <h4 class="small font-weight-bold">Controles / Tareas <span class="float-right">0%</span></h4>
+                                <h4 class="small font-weight-bold">Controles / Tareas <span class="float-right">{{ $usuario_info->controles }}</span></h4>
                                 <div class="progress progress-sm mb-3">
-                                    <div class="progress-bar bg-primary" aria-valuenow="5" aria-valuemin="0" aria-valuemax="100" style="width: 5%;"><span class="sr-only">0%</span></div>
+                                    <div class="progress-bar bg-primary" id = "controles" aria-valuenow="5" aria-valuemin="0" aria-valuemax="100" style="width: 5%;"><span class="sr-only">0%</span></div>
                                 </div>
-                                <h4 class="small font-weight-bold">Otro<span class="float-right">0%</span></h4>
+                                <h4 class="small font-weight-bold">Otro<span class="float-right">{{ $usuario_info->otros }}</span></h4>
                                 <div class="progress progress-sm mb-3">
-                                    <div class="progress-bar bg-info" aria-valuenow="5" aria-valuemin="0" aria-valuemax="100" style="width: 5%;"><span class="sr-only">0%</span></div>
+                                    <div class="progress-bar bg-info" id = "otros" aria-valuenow="5" aria-valuemin="0" aria-valuemax="100" style="width: 5%;"><span class="sr-only">0%</span></div>
                                 </div>                         
                             </div>
                         </div>
@@ -84,5 +84,48 @@ Perfil {{ auth()->user()->name }}
                         </div>
                     </div>
                 </div>
-              
+                <script>
+                    function defBarra(cantidad){
+                        switch(cantidad){
+                            case 1:
+                                return "10%";
+                            case 2:
+                                return "20%";
+                            case 3:
+                                return "30%";
+                            case 4:
+                                return "40%";
+                            case 5:
+                                return "50%";
+                            case 6:
+                                return "60%";
+                            case 7:
+                                return "70%";
+                            case 8:
+                                return "80%";
+                            case 9:
+                                return "90%";
+                            case 10:
+                                return "100%";
+                            default:
+                                break;    
+                        }
+                    }
+                    var certamenes, labs, controles, otros;
+                    certamenes = parseInt('<?php echo $usuario_info->certamenes ?>', 10);
+                    labs= parseInt('<?php echo $usuario_info->laboratorios ?>', 10);
+                    controles=parseInt('<?php echo $usuario_info->controles ?>', 10);
+                    otros=parseInt('<?php echo $usuario_info->otros ?>', 10);
+
+                    var certamenes_doc, labs_doc, controles_doc, otros_doc;
+                    certamenes_doc = document.getElementById('certamenes');
+                    labs_doc = document.getElementById('laboratorios');
+                    controles_doc = document.getElementById('controles');
+                    otros_doc = document.getElementById('otros');
+
+                    certamenes_doc.style.width = defBarra(certamenes);
+                    labs_doc.style.width = defBarra(labs);
+                    controles_doc.style.width = defBarra(controles);
+                    otros_doc.style.width = defBarra(otros);
+                </script>         
 @endsection

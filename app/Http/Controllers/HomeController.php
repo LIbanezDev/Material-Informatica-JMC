@@ -15,7 +15,8 @@ class HomeController extends Controller
 
     public function perfil()
     {
-        return view('usuarios.perfil');
+        $usuario_info = User::findOrFail(auth()->user()->id);
+        return view('usuarios.perfil', compact('usuario_info'));
     }
     public function ranking()
     {

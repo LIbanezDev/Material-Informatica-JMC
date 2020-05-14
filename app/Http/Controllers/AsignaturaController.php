@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Asignatura;
 use App\Archivo;
+use App\User;
 use Illuminate\Http\Request;
 
 class AsignaturaController extends Controller
@@ -19,20 +20,39 @@ class AsignaturaController extends Controller
         $asignaturas_s2 = Asignatura::where('semestre', 2)->get();
         $asignaturas_s3 = Asignatura::where('semestre', 3)->get();
         $asignaturas_s4 = Asignatura::where('semestre', 4)->get();
-        $cantidad_archivos = array();
+        
+        $todos_los_usuarios = User::all();
+
+        $cantidad_material = array(
+            'certamenes' => 0,
+            'controles' => 0,
+            'laboratorios' => 0,
+            'otros' => 0,
+        );
+        
+        foreach($todos_los_usuarios as $usuario){   // Cantidad de archivos de cada material
+            $cantidad_material['certamenes'] += $usuario->certamenes;
+            $cantidad_material['controles'] += $usuario->controles;
+            $cantidad_material['laboratorios'] += $usuario->laboratorios;
+            $cantidad_material['otros'] += $usuario->otros;
+        }
+        
+        $cantidad_archivos = array();   // Cantidad de archivos por asignatura
         for($i = 1; $i <= 23; $i++){
             $cantidad = Archivo::where('numero_asignatura', $i)->count();
             $cantidad_archivos[$i] = $cantidad;
         }
+
         $semestre_asignatura = array(
             1 => $asignaturas_s1,
             2 => $asignaturas_s2,
             3 => $asignaturas_s3,
             4 => $asignaturas_s4,
         );
+
         $todas_las_asignaturas = Asignatura::all();
 
-        return view('asignaturas.asignaturasTodas', compact('semestre_asignatura', 'cantidad_archivos', 'todas_las_asignaturas'));
+        return view('asignaturas.asignaturasTodas', compact('semestre_asignatura', 'cantidad_archivos', 'todas_las_asignaturas', 'cantidad_material'));
     }
     /**
      * Show the form for creating a new resource.
