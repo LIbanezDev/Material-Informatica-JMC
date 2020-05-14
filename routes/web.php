@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductoController;
 use Illuminate\Support\Facades\Route;
 
@@ -20,8 +21,9 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::resource('productos', 'ProductoController');
-Route::get('productos/categoria/{seccion}', 'HomeController@seccion')->name('seccion');
 Route::resource('asignaturas', 'AsignaturaController');
 Route::resource('archivos', 'ArchivoController');
+
+Route::get('/perfil', 'HomeController@perfil')->name('perfil');
+Route::get('/ranking', 'HomeController@ranking')->name('ranking');
 

@@ -7,7 +7,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>@yield('titulo')</title>
-    <link rel="shortcut icon" href="{{ asset('Logo_UTFSM.png') }}">
+    <link rel="shortcut icon" href="{{ asset('tekashi.png') }}">
     <link rel="stylesheet" href="{{ asset('assets/bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
     <link rel="stylesheet" href="{{ asset('assets/fonts/fontawesome-all.min.css') }}">
@@ -23,9 +23,9 @@
                 </a>
                 <hr class="sidebar-divider my-0">
                 <ul class="nav navbar-nav text-light" id="accordionSidebar">
-                    <li class="nav-item" role="presentation"><a class="nav-link active" href="{{ route('asignaturas.index') }}"><i class="fas fa-book"></i><span>Asignaturas</span></a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="#"><i class="fas fa-user"></i><span>Perfil</span></a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="#"><i class="fas fa-table"></i><span>Ranking Usuarios</span></a></li>                   
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="{{ route('asignaturas.index') }}"><i class="fas fa-book"></i><span>Asignaturas</span></a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="{{ route('perfil') }}"><i class="fas fa-user"></i><span>Mi perfil</span></a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="{{ route('ranking')}}"><i class="fas fa-table"></i><span>Ranking Usuarios</span></a></li>                   
                     @guest
                         <li class="nav-item" role="presentation"><a class="nav-link" href="{{ route('login') }}"><i class="far fa-user-circle"></i><span>Entrar</span></a></li>
                         @if (Route::has('register'))
@@ -85,15 +85,10 @@
                     @yield('content')
                 </div>
             </div>
-        <footer class="bg-white sticky-footer">
-            <div class="container my-auto">
-                <div class="text-center my-auto copyright"><span>Copyright © material_usm 2020</span></div>
-            </div>
-        </footer>
     </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a></div>
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="{{ asset('assets/js/jquery.min.js') "></script>
+    <script src="{{ asset('assets/bootstrap/js/bootstrap.min.js') "></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
-    <script src="assets/js/theme.js"></script>
+    <script src="{{ asset('assets/js/theme.js') "></script>
 </body>
 </html>
