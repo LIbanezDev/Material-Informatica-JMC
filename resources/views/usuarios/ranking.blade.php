@@ -3,7 +3,64 @@
 Ranking de colaboradores
 @endsection
 @section('content')
-<div class="container">
-    <h1>Ranking de usuarios colaboradores</h1>
-</div>
+<h3 class="text-dark mb-4">Ranking de Colaboradores!</h3>
+                <div class="card shadow">
+                    <div class="card-header py-3">
+                        <p class="text-primary m-0 font-weight-bold">Información de mejores colaboradores. Subir un certamen entrega 3 puntos, Controles y Laboratorios 2, y otro tipo de archivos solo 1 punto.</p>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
+                            <table class="table dataTable my-0" id="dataTable">
+                                <thead>
+                                    <tr>
+                                        <th>Nombre</th>
+                                        <th>Puntos totales</th>
+                                        <th>Certamenes</th>
+                                        <th>Labs</th>
+                                        <th>Controles</th>
+                                        <th>Otros</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach($usuarios_ranking as $user)
+                                    <tr>
+                                        <td><strong> 1. <img class="rounded-circle mr-2" width="30" height="30" src="{{asset('imgsPerfil/'.$user->imagen) }}">{{ $user->name }}</strong></td>
+                                        <td>{{ $user->puntos  }}</td>
+                                        <td>{{ $user->certamenes }}</td>
+                                        <td>{{ $user->laboratorios }}</td>
+                                        <td>{{ $user->controles }}</td>
+                                        <td>{{ $user->otros }}</td>
+                                    </tr>
+                                    @endforeach                                   
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td><strong>Nombre</strong></td>
+                                        <td><strong>Puntos totales</strong></td>
+                                        <td><strong>Certamenes</strong></td>
+                                        <td><strong>Labs</strong></td>
+                                        <td><strong>Controles</strong></td>
+                                        <td><strong>Otros</strong></td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 align-self-center">
+                                <p id="dataTable_info" class="dataTables_info" role="status" aria-live="polite">Mostrando 1 to 1 of {{ $cantidad }}</p>
+                            </div>
+                            <div class="col-md-6">
+                                <nav class="d-lg-flex justify-content-lg-end dataTables_paginate paging_simple_numbers">
+                                    <ul class="pagination">
+                                        <li class="page-item disabled"><a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
+                                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                        <li class="page-item"><a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 @endsection

@@ -7,7 +7,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>@yield('titulo')</title>
-    <link rel="shortcut icon" href="{{ asset('tekashi.png') }}">
+    <link rel="icon" href="{{asset('Logo_UTFSM.png')}}">
     <link rel="stylesheet" href="{{ asset('assets/bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
     <link rel="stylesheet" href="{{ asset('assets/fonts/fontawesome-all.min.css') }}">
@@ -17,8 +17,8 @@
     <div id="wrapper">
         <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0">
             <div class="container-fluid d-flex flex-column p-0">
-                <a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="#">
-                    <div class="sidebar-brand-icon"><i class="fas fa-university"></i></div>
+                <a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="{{ route('asignaturas.index')}}">
+                    <div class="sidebar-brand-icon"><img src="{{ asset('Logo_UTFSM.png') }}" alt="Logo USM" height="40" width="40" ></div>
                     <div class="sidebar-brand-text mx-3"><span>Material USM</span></div>
                 </a>
                 <hr class="sidebar-divider my-0">
@@ -62,14 +62,23 @@
                             <div class="d-none d-sm-block topbar-divider"></div>
                             @guest
                             <li class="nav-item dropdown no-arrow" role="presentation">
-                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#"><span class="d-none d-lg-inline mr-2 text-gray-600 small">Invitado</span><img class="border rounded-circle img-profile" src="{{ asset('assets/img/avatars/avatar_default.jpg') }}"></a>                                   
+                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#"><span class="d-none d-lg-inline mr-2 text-gray-600 small">Invitado</span><img class="border rounded-circle img-profile" src="{{ asset('imgsPerfil/default.png') }}"></a>                                   
+                                    <div class="dropdown-menu shadow dropdown-menu-right animated--grow-in" role="menu">
+                                        <a class="dropdown-item" role="presentation" href="{{ route('login') }}">
+                                            <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                            &nbsp;Iniciar Sesion
+                                        </a>
+                                    </div>
                                 </div>
                             </li>
                             @else
                             <li class="nav-item dropdown no-arrow" role="presentation">
-                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#"><span class="d-none d-lg-inline mr-2 text-gray-600 small">{{ auth()->user()->name }}</span><img class="border rounded-circle img-profile" src="{{ asset('assets/img/avatars/avatar_default.jpg') }}"></a>
-                                    <div
-                                        class="dropdown-menu shadow dropdown-menu-right animated--grow-in" role="menu"><a class="dropdown-item" role="presentation" href="#"><i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Profile</a><a class="dropdown-item" role="presentation" href="#"><i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Settings</a>                                       
+                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#"><span class="d-none d-lg-inline mr-2 text-gray-600 small">{{ auth()->user()->name }}</span><img class="border rounded-circle img-profile" src="{{ asset('imgsPerfil/'.auth()->user()->imagen) }}"></a>
+                                    <div class="dropdown-menu shadow dropdown-menu-right animated--grow-in" role="menu">
+                                        <a class="dropdown-item" role="presentation" href="{{ route('perfil') }}">
+                                            <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                            &nbsp;Mi Perfil
+                                        </a>                                      
                                             <div class="dropdown-divider"></div><a class="dropdown-item" role="presentation" href="{{ route('logout') }}" onclick="event.preventDefault();
                                             document.getElementById('logout-form').submit();"><i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Cerrar Sesión</a></div>                    
                                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -85,7 +94,6 @@
                     @yield('content')
                 </div>
             </div>
-    </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a></div>
     <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
     <script src="{{ asset('assets/bootstrap/js/bootstrap.min.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
