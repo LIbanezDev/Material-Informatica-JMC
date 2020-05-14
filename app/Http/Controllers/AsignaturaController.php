@@ -30,7 +30,9 @@ class AsignaturaController extends Controller
             3 => $asignaturas_s3,
             4 => $asignaturas_s4,
         );
-        return view('asignaturas.asignaturasTodas', compact('semestre_asignatura', 'cantidad_archivos'));
+        $todas_las_asignaturas = Asignatura::all();
+
+        return view('asignaturas.asignaturasTodas', compact('semestre_asignatura', 'cantidad_archivos', 'todas_las_asignaturas'));
     }
     /**
      * Show the form for creating a new resource.
@@ -91,7 +93,7 @@ class AsignaturaController extends Controller
         $asignatura_detalles = Asignatura::findOrFail($id);
         $archivos_asignatura = Archivo::where('numero_asignatura', $id)->get();
         $todas_las_asignaturas = Asignatura::all();
-        return view('asignaturas.asignaturasDetalles', compact('asignatura_detalles', 'todas_las_asignaturas', 'archivos_asignatura'));
+        return view('asignaturas.asignaturasDetails', compact('asignatura_detalles', 'todas_las_asignaturas', 'archivos_asignatura'));
     }
 
     /**

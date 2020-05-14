@@ -1,3 +1,52 @@
+@extends('layouts.app')
+@section('titulo')
+Hola
+@endsection
+@section('content')
+<div class="container">
+<div class="row">
+  <div class="col border-dark justify-content-center">
+    <div class="text-center">
+      <h1 class="display">Lista de apuntes de {{ $asignatura_detalles->nombre }}</h1>
+      <div class="text-muted">
+        <h6>En construcción uwu</h6>
+      </div>
+    </div>
+    @foreach($archivos_asignatura as $archivo)
+    @if($archivo->formato == "png" or $archivo->formato == "jpg")
+      <a href="{{ asset('archivosAsignaturas/'.$archivo->numero_asignatura.'/'.$archivo->nombre) }}" target="_blank"><img src="{{ asset('imagenes/icono_imagen.svg')}}" alt="" height="40" width="40"> {{ $archivo->nombre }} </a>
+      <a href="{{ asset('archivosAsignaturas/'.$archivo->numero_asignatura.'/'.$archivo->nombre) }}" download="{{ $archivo->nombre }}">
+      <br>
+      <button type="button" class="btn btn-outline-dark mt-2 btn-sm">
+        Descargar
+      </button>
+    </a>
+    <hr>
+    @endif
+    @if($archivo->formato == "pdf")
+      <a href="{{ asset('archivosAsignaturas/'.$archivo->numero_asignatura.'/'.$archivo->nombre) }}" target="_blank"><img src="{{ asset('imagenes/icono_pdf.svg')}}" alt="" height="40" width="40"> {{ $archivo->nombre }} </a>
+      <a href="{{ asset('archivosAsignaturas/'.$archivo->numero_asignatura.'/'.$archivo->nombre) }}" download="{{ $archivo->nombre }}">
+      <br>
+      <button type="button" class="btn btn-outline-dark mt-2 btn-sm">
+        Descargar
+      </button>
+    </a>
+    <hr>
+    @endif 
+    @endforeach     
+  </div>
+</div>
+@if(session('mensaje'))
+  <div class="alert alert-success alert-dismissible fade show col-md-12" role="alert">
+  <strong> {{ session('mensaje') }} </strong>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+      </button>
+  </div>   
+@endif
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
+  Agregar Archivo
+</button>
 <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -66,3 +115,22 @@
     </div>
   </div>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+@endsection
