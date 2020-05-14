@@ -4,49 +4,62 @@
 @endsection
 @section('content')
 <div class="container">
-<div class="row">
-  <div class="col border-dark justify-content-center">
-    <div class="text-center">
-      <h1 class="display">Lista de apuntes de {{ $asignatura_detalles->nombre }}</h1>
-      <div class="text-muted">
-        <h6>En construcción uwu</h6>
+  <div class="row">
+    <div class="col border-dark justify-content-center">
+      <div class="text-center">
+        <h1 class="display">Lista de apuntes de {{ $asignatura_detalles->nombre }}</h1>
+        <div class="text-muted">
+          <h6>En construcción uwu</h6>
+        </div>
       </div>
     </div>
-    @foreach($archivos_asignatura as $archivo)
-    @if($archivo->formato == "png" or $archivo->formato == "jpg")
-      <a href="{{ asset('archivosAsignaturas/'.$archivo->numero_asignatura.'/'.$archivo->nombre) }}" target="_blank"><img src="{{ asset('imagenes/icono_imagen.svg')}}" alt="" height="40" width="40"> {{ $archivo->nombre }} </a>
-      <a href="{{ asset('archivosAsignaturas/'.$archivo->numero_asignatura.'/'.$archivo->nombre) }}" download="{{ $archivo->nombre }}">
-      <br>
-      <button type="button" class="btn btn-outline-dark mt-2 btn-sm">
-        Descargar
-      </button>
-    </a>
-    <hr>
-    @endif
-    @if($archivo->formato == "pdf")
-      <a href="{{ asset('archivosAsignaturas/'.$archivo->numero_asignatura.'/'.$archivo->nombre) }}" target="_blank"><img src="{{ asset('imagenes/icono_pdf.svg')}}" alt="" height="40" width="40"> {{ $archivo->nombre }} </a>
-      <a href="{{ asset('archivosAsignaturas/'.$archivo->numero_asignatura.'/'.$archivo->nombre) }}" download="{{ $archivo->nombre }}">
-      <br>
-      <button type="button" class="btn btn-outline-dark mt-2 btn-sm">
-        Descargar
-      </button>
-    </a>
-    <hr>
-    @endif 
-    @endforeach     
   </div>
-</div>
+  <div class="row">
+    @foreach($archivos_asignatura as $archivo)
+    <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 mt-3">
+        <a href="{{ asset('archivosAsignaturas/'.$archivo->numero_asignatura.'/'.$archivo->nombre) }}" target="_blank"><img src="{{ asset('assets/icons/'.$archivo->formato.'.svg')}}" alt="" height="40" width="40"> {{ $archivo->nombre }} </a>
+        <a href="{{ asset('archivosAsignaturas/'.$archivo->numero_asignatura.'/'.$archivo->nombre) }}" download="{{ $archivo->nombre }}">
+        <br>
+        <button class="btn btn-secondary btn-sm btn-icon-split d-sm-inline-block mt-2">
+          <span class="text-white icon">
+            <i class="fas fa-file-download"></i>
+          </span>
+          <span class="text-white text"> Descargar</span>
+        </button>
+      </a>   
+    </div>
+    @endforeach
+  </div>
+
 @if(session('mensaje'))
-  <div class="alert alert-success alert-dismissible fade show col-md-12" role="alert">
+  <div class="alert alert-success alert-dismissible fade show col-md-12 m-4" role="alert">
   <strong> {{ session('mensaje') }} </strong>
       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
       <span aria-hidden="true">&times;</span>
       </button>
   </div>   
 @endif
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
-  Agregar Archivo
-</button>
+
+<footer class="bg-white sticky-footer">
+<div class="d-sm-flex justify-content-between align-items-center mb-4">
+    <a class="btn btn-danger btn-icon-split d-sm-inline-block" role="button" href="{{ redirect()->back()->getTargetUrl() }}">
+      <span class="text-white icon">
+        <i class="fas fa-arrow-left"></i>
+      </span>
+      <span class="text-white text"> Volver Atrás </span>
+    </a>
+    <a class="btn btn-success btn-icon-split d-sm-inline-block" role="button" href="{{ redirect()->back()->getTargetUrl() }}" data-toggle="modal" data-target="#staticBackdrop">
+      <span class="text-white icon">
+        <i class="fas fa-file-upload"></i>
+      </span>
+      <span class="text-white text"> Subir Material </span>
+    </a>
+</div>
+</footer>
+
+
+
+
 <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -115,13 +128,7 @@
     </div>
   </div>
 </div>
-<hr>
-<a class="btn btn-danger btn-icon-split" role="button" href="{{ redirect()->back()->getTargetUrl() }}">
-  <span class="text-white icon">
-    <i class="fas fa-arrow-left"></i>
-  </span>
-  <span class="text-white text"> Volver Atrás </span>
-</a>
+
 
 
 
