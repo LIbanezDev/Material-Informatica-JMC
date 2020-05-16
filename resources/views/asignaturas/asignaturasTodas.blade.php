@@ -4,6 +4,14 @@ Asignaturas T.U en Informática
 @endsection
 @section('content')
 <div class="container-fluid">
+                @if(session('mensaje'))
+                <div class="alert alert-success alert-dismissible fade show col-md-12 m-4" role="alert">
+                <strong> {{ session('mensaje') }} </strong>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>   
+                @endif
                 @if(session('message'))
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
                     <strong> {{ session('message')}} </strong>
@@ -274,16 +282,7 @@ Asignaturas T.U en Informática
                                 <option>{{ $asignatura->nombre }}</option>
                                 @endforeach
                                 </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleFormControlSelect1">Semestre en que se imparte</label>
-                                <select class="form-control" id="exampleFormControlSelect1" name="semestre_asignatura">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                </select>
-                            </div>
+                            </div>                           
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                 <label for="exampleFormControlSelect1">Tipo de material</label>

@@ -52,12 +52,13 @@ class ArchivoController extends Controller
         }else{
             return back()->with('mensaje', 'No adjuntaste archivo...');
         }
+
         $data = $file->getClientOriginalName();    
         $extension_archivo = substr($data, strpos($data, ".") + 1);    
         $archivo = new ArchivoTemporal(); 
         $archivo->nombre = $nombre;
         $archivo->numero_asignatura = $materia_del_archivo->id;
-        $archivo->semestre = $request->semestre_asignatura;
+        $archivo->semestre = $materia_del_archivo->semestre;
         $archivo->formato = $extension_archivo;
         $archivo->tipo_evaluacion = $request->tipo_material;
         $request->subido_por == null ? $archivo->subido_por_usuario = 0 : $archivo->subido_por_usuario = $request->subido_por; 

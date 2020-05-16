@@ -3,10 +3,11 @@
 Ranking de colaboradores
 @endsection
 @section('content')
-<h3 class="text-dark mb-4">Ranking de Colaboradores!</h3>
+<h3 class="text-dark mb-4">Ranking de Colaboradores! <img src="{{ asset('assets/icons/ranking.svg')}}" alt="" height="40" width="40"></h3>
                 <div class="card shadow">
                     <div class="card-header py-3">
-                        <p class="text-primary m-0 font-weight-bold">Información de mejores colaboradores. Subir un certamen entrega 3 puntos, Controles y Laboratorios 2, y otro tipo de archivos solo 1 punto.</p>
+                        <p class="text-primary m-0 font-weight-bold">Información de mejores colaboradores.</p>
+                        <p class="text-danger m-0 font-weight-bold">Certamen: 3 pts - Controles y laboratorios: 2 pts - Otro tipo de archivos: 1 pt</p>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
@@ -26,10 +27,15 @@ Ranking de colaboradores
                                     <tr>
                                         <td>
                                             <strong>
-                                                @if(isset($_GET['page']) && $_GET['page'] > 1) 
+                                                @if($iterador == 1)
+                                                    <img src="{{ asset('assets/icons/one_ranking.svg')}}" alt="" height="30" width="30">
+                                                    <?php $iterador++; ?>
+                                                @else
+                                                @if(isset($_GET['page']) && $_GET['page'] >= 1) 
                                                 {{ $iterador++ }}.  
                                                 @else
                                                 {{ $iterador++ }}. 
+                                                @endif
                                                 @endif
                                                 <img class="rounded-circle mr-2" width="30" height="30" src="{{asset('imgsPerfil/'.$user->imagen) }}">{{ $user->name }}                                              
                                             </strong>
@@ -42,16 +48,7 @@ Ranking de colaboradores
                                     </tr>
                                     @endforeach                                   
                                 </tbody>
-                                <tfoot>
-                                    <tr>
-                                        <td><strong>Nombre</strong></td>
-                                        <td><strong>Puntos totales</strong></td>
-                                        <td><strong>Certamenes</strong></td>
-                                        <td><strong>Labs</strong></td>
-                                        <td><strong>Controles</strong></td>
-                                        <td><strong>Otros</strong></td>
-                                    </tr>
-                                </tfoot>
+                                
                             </table>
                         </div>
                         <div class="row">

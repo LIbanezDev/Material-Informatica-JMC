@@ -83,15 +83,6 @@
               @endforeach
             </select>
           </div>
-          <div class="form-group">
-            <label for="exampleFormControlSelect1">Semestre en que se imparte</label>
-            <select class="form-control" id="exampleFormControlSelect1" name="semestre_asignatura">
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-            </select>
-          </div>
           <div class="form-row">
             <div class="form-group col-md-6">
               <label for="exampleFormControlSelect1">Tipo de material</label>
