@@ -28,27 +28,28 @@ class ArchivoTemporalController extends Controller
             }
             return back()->with('mensaje', 'Archivo rechazado exitosamente');
         }
-
-        $user = User::findOrFail($request->subido_por);
-        switch($request->tipo_evaluacion){
-            case "Certamen":
-                $user->certamenes += 1;
-                $user->puntos += 3;
-                break;
-            case "Laboratorio":
-                $user->laboratorios += 1;
-                $user->puntos += 2;
-                break;
-            case "Control":
-                $user->controles += 1;
-                $user->puntos += 2;
-                break;
-            case "Apunte / Otro":
-                $user->otros += 1;
-                $user->puntos += 1;
-                break;
+        if($request->subido_por != 0){
+            $user = User::findOrFail($request->subido_por);
+            switch($request->tipo_evaluacion){
+                case "Certamen":
+                    $user->certamenes += 1;
+                    $user->puntos += 3;
+                    break;
+                case "Laboratorio":
+                    $user->laboratorios += 1;
+                    $user->puntos += 2;
+                    break;
+                case "Control":
+                    $user->controles += 1;
+                    $user->puntos += 2;
+                    break;
+                case "Apunte / Otro":
+                    $user->otros += 1;
+                    $user->puntos += 1;
+                    break;
+            }
+            $user->save();
         }
-        $user->save();
 
         $archivo = new Archivo(); 
         $archivo->nombre = $request->nombre;

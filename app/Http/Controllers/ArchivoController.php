@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Archivo;
 use App\Asignatura;
+use App\ArchivoTemporal;
 use Illuminate\Http\Request;
 
 class ArchivoController extends Controller
@@ -15,7 +16,13 @@ class ArchivoController extends Controller
      */
     public function index()
     {
-        //
+        if(isset(auth()->user()->id)){
+            if(auth()->user()->id == 1){
+                $archivos_a_comprobar = ArchivoTemporal::all();
+                return view('archivoTemporal.formulario', compact('archivos_a_comprobar'));
+            }
+        }     
+        return back()->with('admin', 'No tienes permiso para agregar archivos :(');
     }
 
     /**
@@ -47,15 +54,16 @@ class ArchivoController extends Controller
         }
         $data = $file->getClientOriginalName();    
         $extension_archivo = substr($data, strpos($data, ".") + 1);    
-        $archivo = new Archivo(); 
+        $archivo = new ArchivoTemporal(); 
         $archivo->nombre = $nombre;
         $archivo->numero_asignatura = $materia_del_archivo->id;
         $archivo->semestre = $request->semestre_asignatura;
         $archivo->formato = $extension_archivo;
         $archivo->tipo_evaluacion = $request->tipo_material;
+        $request->subido_por == null ? $archivo->subido_por_usuario = 0 : $archivo->subido_por_usuario = $request->subido_por; 
         $archivo->save();
 
-        return back()->with('mensaje', 'Archivo Agregado!');
+        return back()->with('mensaje', 'Su archivo se encuentra en revisión, gracias!');
     }
 
     /**
