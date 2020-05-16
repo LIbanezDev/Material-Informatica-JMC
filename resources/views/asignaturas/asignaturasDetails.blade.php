@@ -71,6 +71,9 @@
       </div>
       <form method="POST" action="{{ route('archivos.store') }}" enctype="multipart/form-data">
         @csrf
+        @if(Auth::check())
+          <input class="d-none" type ="number" name="subido_por" value="{{auth()->user()->id}}">
+        @endif
         <div class="modal-body">       
         <div class="form-group">
             <label for="exampleFormControlSelect1">Nombre de la asignatura</label>

@@ -61,13 +61,14 @@ class AsignaturaController extends Controller
      */
     public function create()
     {
-        if(isset(auth()->user()->email)){
-            if(auth()->user()->email == "lucas.ivergara18@gmail.com"){
+        if(isset(auth()->user()->id)){
+            if(auth()->user()->id == 1){
                 return view('asignaturas.asignaturasCrear');
-            }else{
-                return back()->with('admin', 'No tienes permiso para agregar asignaturas :(');
             }
         }
+        
+        return back()->with('admin', 'No tienes permiso para agregar asignaturas :(');
+ 
     }
 
     /**

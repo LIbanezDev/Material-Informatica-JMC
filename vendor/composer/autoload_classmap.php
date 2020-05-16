@@ -7,10 +7,12 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'App\\Archivo' => $baseDir . '/app/Archivo.php',
+    'App\\ArchivoTemporal' => $baseDir . '/app/ArchivoTemporal.php',
     'App\\Asignatura' => $baseDir . '/app/Asignatura.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
     'App\\Http\\Controllers\\ArchivoController' => $baseDir . '/app/Http/Controllers/ArchivoController.php',
+    'App\\Http\\Controllers\\ArchivoTemporalController' => $baseDir . '/app/Http/Controllers/ArchivoTemporalController.php',
     'App\\Http\\Controllers\\AsignaturaController' => $baseDir . '/app/Http/Controllers/AsignaturaController.php',
     'App\\Http\\Controllers\\Auth\\ConfirmPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ConfirmPasswordController.php',
     'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
@@ -19,6 +21,7 @@ return array(
     'App\\Http\\Controllers\\Auth\\ResetPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ResetPasswordController.php',
     'App\\Http\\Controllers\\Auth\\VerificationController' => $baseDir . '/app/Http/Controllers/Auth/VerificationController.php',
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
+    'App\\Http\\Controllers\\FavoritoController' => $baseDir . '/app/Http/Controllers/FavoritoController.php',
     'App\\Http\\Controllers\\HomeController' => $baseDir . '/app/Http/Controllers/HomeController.php',
     'App\\Http\\Kernel' => $baseDir . '/app/Http/Kernel.php',
     'App\\Http\\Middleware\\Authenticate' => $baseDir . '/app/Http/Middleware/Authenticate.php',

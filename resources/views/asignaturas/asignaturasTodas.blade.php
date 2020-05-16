@@ -88,7 +88,7 @@ Asignaturas T.U en Informática
                                         
                                     </div>
                                     <div class="col-auto"> 
-                                        @if(Auth::check())                                                           
+                                        @if(Auth::check())                                                        
                                         <button type="button" class="btn btn-primary btn-circle ml-1" data-toggle="tooltip" data-placement="top" title="Agregar a favoritos">
                                             <a href="{{ route('addFavorito', ['id_asignatura' => $asignatura->id, 'id_user' => auth()->user()->id ]) }}">
                                                 <i class="fas fa-plus text-white">
@@ -262,6 +262,10 @@ Asignaturas T.U en Informática
                         </div>
                         <form method="POST" action="{{ route('archivos.store') }}" enctype="multipart/form-data">
                             @csrf
+                            @if(Auth::check())
+                                <input class="d-none" type ="number" name="subido_por" 
+                                value="{{auth()->user()->id}}">
+                            @endif
                             <div class="modal-body">       
                             <div class="form-group">
                                 <label for="exampleFormControlSelect1">Nombre de la asignatura</label>

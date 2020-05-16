@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateArchivosTable extends Migration
+class CreateArchivoTemporalsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateArchivosTable extends Migration
      */
     public function up()
     {
-        Schema::create('archivos', function (Blueprint $table) {
+        Schema::create('archivo_temporals', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nombre');           
             $table->text('formato');
@@ -21,7 +21,7 @@ class CreateArchivosTable extends Migration
             $table->integer('semestre');
             $table->unsignedBigInteger('numero_asignatura'); // Relación con categorias
             $table->foreign('numero_asignatura')->references('id')->on('asignaturas'); // clave foranea
-            $table->integer('subido_por_usuario')->nullable(); // Relación con categorias
+            $table->integer('subido_por_usuario');
             $table->timestamps();
         });
     }
@@ -33,6 +33,6 @@ class CreateArchivosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('archivos');
+        Schema::dropIfExists('archivo_temporals');
     }
 }

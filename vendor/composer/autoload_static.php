@@ -466,10 +466,12 @@ class ComposerStaticInit19ae924285f567603469111095e826a4
 
     public static $classMap = array (
         'App\\Archivo' => __DIR__ . '/../..' . '/app/Archivo.php',
+        'App\\ArchivoTemporal' => __DIR__ . '/../..' . '/app/ArchivoTemporal.php',
         'App\\Asignatura' => __DIR__ . '/../..' . '/app/Asignatura.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\ArchivoController' => __DIR__ . '/../..' . '/app/Http/Controllers/ArchivoController.php',
+        'App\\Http\\Controllers\\ArchivoTemporalController' => __DIR__ . '/../..' . '/app/Http/Controllers/ArchivoTemporalController.php',
         'App\\Http\\Controllers\\AsignaturaController' => __DIR__ . '/../..' . '/app/Http/Controllers/AsignaturaController.php',
         'App\\Http\\Controllers\\Auth\\ConfirmPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ConfirmPasswordController.php',
         'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
@@ -478,6 +480,7 @@ class ComposerStaticInit19ae924285f567603469111095e826a4
         'App\\Http\\Controllers\\Auth\\ResetPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ResetPasswordController.php',
         'App\\Http\\Controllers\\Auth\\VerificationController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/VerificationController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
+        'App\\Http\\Controllers\\FavoritoController' => __DIR__ . '/../..' . '/app/Http/Controllers/FavoritoController.php',
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
