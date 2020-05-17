@@ -8,11 +8,11 @@ Root Only
         <div class="col-md">
             <div class="card">               
                 <div class="card-header d-flex justify-content-between align-items-center">
-                    <span> PORTAL DE {{strtoupper(auth()->user()->name)}} </span>
+                    <span> PORTAL DE ADMINISTRACION DE {{strtoupper(auth()->user()->name)}} </span>
                     <a href="{{route('asignaturas.index')}}" class="btn btn btn-warning btn-sm">Volver atras</a>
                 </div>
                 <div class="text-center"> 
-                    <h1 class="mb-4">Estos son los archivos que se han subido, verificalos y toma la decisión </h1>
+                    <h2 class="mt-4 mb-4">Lista de archivos que los usuarios han subido.</h2>
                 </div>
                 @if(isset($archivos_a_comprobar))
                 @foreach($archivos_a_comprobar as $a)
@@ -24,7 +24,7 @@ Root Only
                             <div class="form-group col-md-1">
                                 <input type="number" class="form-control" name = 'subido_por' value="{{$a->subido_por_usuario}}"> 
                                 <div class="text-muted">
-                                    <h6>Subido por</h6>
+                                    <h6>ID Usuario</h6>
                                 </div>
                             </div>                           
                             <div class="form-group col-md-3">
@@ -45,16 +45,16 @@ Root Only
                                     <h6>Tipo de evaluacion</h6>
                                 </div>
                             </div>  
-                            <div class="form-group col-md-2">
+                            <div class="form-group col-md-1">
                                 <input type="number" class="form-control"  name = 'semestre' value = "{{$a->semestre}}">
                                 <div class="text-muted">
                                     <h6>Semestre</h6>
                                 </div> 
                             </div> 
-                            <div class="form-group col-md-2">
+                            <div class="form-group col-md-1">
                                 <input type="number" class="form-control" name = 'numero_asignatura' value = "{{$a->numero_asignatura}}"> 
                                 <div class="text-muted">
-                                    <h6>Numero o ID de asignatura</h6>
+                                    <h6>Ramo</h6>
                                 </div>
                             </div>
                             <div class="form-group col-md-2">
@@ -63,8 +63,8 @@ Root Only
                                 </a>
                             </div>                                 
                             <div class="form-group col-md-3">
-                                <button name="voto" value="apruebo" type="submit" class="btn btn-success">Aceptar y subir</button>    
-                                <button name="voto" value="rechazo" type="submit" class="btn btn-danger">Rechazar</button>
+                                <button name="voto" value="apruebo" type="submit" class="btn btn-success btn-sm">Aceptar y subir</button>    
+                                <button name="voto" value="rechazo" type="submit" class="btn btn-danger btn-sm">Rechazar</button>
                             </div>
                         </div>                   
                     </form>                            

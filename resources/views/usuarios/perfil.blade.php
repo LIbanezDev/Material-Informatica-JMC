@@ -7,13 +7,21 @@ Perfil {{ auth()->user()->name }}
     <div class="col-lg-4">
         <div class="card mb-3 justify-content-center">
             <div class="card-header py-3">
-                <h6 class="text-primary font-weight-bold m-0">
+                <h6 class="text-primary font-weight-bold m-0 text-center">
                     {{ strtoupper(auth()->user()->name) }}
                 </h6>
             </div>
-            <div class="card-body text-center shadow"><img class="rounded-circle mb-3 mt-4" src="{{ asset('imgsPerfil/'.auth()->user()->imagen) }}" width="160" height="160">
-                <div class="mb-3"><button class="btn btn-primary btn-sm" type="button">Cambiar Imagen</button></div>
+            <div class="card-body text-center shadow"><img class="rounded-circle mb-3 mt-4 img-profile border border-secondary" src="{{ asset('imgsPerfil/'.auth()->user()->imagen) }}" width="160" height="160">
+                <div class="mb-3"><button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#staticBackdrop">Cambiar Imagen</div>            
             </div>
+            @if(session('mensaje_img'))
+                    <div class="alert alert-danger alert-dismissible fade show  m-4" role="alert">
+                    <strong> {{ session('mensaje_img') }} </strong>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>   
+                @endif
         </div>
         <div class="card shadow mb-4">
             <div class="card-header py-3">
@@ -42,24 +50,6 @@ Perfil {{ auth()->user()->name }}
     <div class="col-lg-8">                                               
         <div class="row">
             <div class="col">
-                <div class="card shadow mb-3">
-                    <div class="card-header py-3">
-                        <p class="text-primary m-0 font-weight-bold">Tus datos</p>
-                    </div>
-                    <div class="card-body">
-                        <form>
-                            <div class="form-row">
-                                <div class="col">
-                                    <div class="form-group"><label for="username"><strong>Nombre</strong></label><input class="form-control" type="text" value="{{ auth()->user()->name }}" name="username"></div>
-                                </div>
-                                <div class="col">
-                                    <div class="form-group"><label for="email"><strong>Correo Electrónico</strong></label><input class="form-control" type="email" value="{{ auth()->user()->email }}" name="email"></div>
-                                </div>
-                            </div>                                           
-                            <div class="form-group"><button class="btn btn-primary btn-sm" type="submit">Cambiar Nombre</button></div>
-                        </form>
-                    </div>
-                </div>
                 <div class="card shadow">
                     <div class="card-header py-3 justify-content-center">
                         <p class="text-primary m-0 font-weight-bold">Mis Favoritos</p>
@@ -89,7 +79,7 @@ Perfil {{ auth()->user()->name }}
                             </div>
                             @endforeach
                             @else
-                                <h2 class="display"> Agrega favoritos en la lista de asignaturas!</h2>
+                                <h2 class="display text-center"> Agrega favoritos a tu lista de asignaturas!</h2>
                             @endif
                         </div> 
                         @if(session('message'))
@@ -106,6 +96,44 @@ Perfil {{ auth()->user()->name }}
         </div>
     </div>
 </div>
+
+<div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="staticBackdropLabel">Subir nueva imagen</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <form method="POST" action="{{ route('cambiarDatos') }}" enctype="multipart/form-data">
+                            @csrf
+                            <div class="modal-body">                                
+                            <div class="form-row">
+                                <div class="card-body text-center shadow"><img class="rounded-circle mb-3 mt-4 border border-secondary" src="{{ asset('imgsPerfil/'.auth()->user()->imagen) }}" width="160" height="160">
+                                    <div class="mb-3"><h2 class="text-center">Cambiar datos </h2></div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleFormControlFile1">Nombre</label>
+                                <input type="text" class="form-control" id="exampleFormControlFile1" name="nombre" value= "{{auth()->user()->name}}">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleFormControlFile1">Ingrese archivo a subir</label>
+                                <input type="file" class="form-control-file" id="exampleFormControlFile1" name="imagen">
+                                <div class="text-muted">
+                                <h6>.jpg - .png</h6>
+                                </div>
+                            </div>
+                            </div>
+                            <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                            <button type="submit" class="btn btn-success">Cambiar Imagen</button>
+                            </div>
+                        </form>
+                        </div>
+                    </div>
+                </div>
 
 
 
