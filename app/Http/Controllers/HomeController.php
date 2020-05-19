@@ -12,11 +12,11 @@ class HomeController extends Controller
 {
     public function ranking()
     {
-        $usuarios_ranking = DB::table('users')->where('puntos', '>', 1)->orderBy('puntos', 'desc')->paginate(8);
+        $usuarios_ranking = DB::table('users')->where('puntos', '>', 1)->orderBy('puntos', 'desc')->paginate(12);
         $i = DB::table('users')->where('puntos', '>', 1)->get();
         $cantidad = count($i);
         $iterador = 1;
-        $paginacion = 8;
+        $paginacion = $cantidad;
         return view('usuarios.ranking', compact('usuarios_ranking', 'iterador', 'cantidad', 'paginacion'));
     }
 }

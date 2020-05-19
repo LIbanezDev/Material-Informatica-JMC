@@ -12,16 +12,16 @@ Perfil {{ auth()->user()->name }}
                 </h6>
             </div>
             <div class="card-body text-center shadow"><img class="rounded-circle mb-3 mt-4 img-profile border border-secondary" src="{{ asset('imgsPerfil/'.auth()->user()->imagen) }}" width="160" height="160">
-                <div class="mb-3"><button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#staticBackdrop">Cambiar Imagen</div>            
+                <div class="mb-3"><button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#staticBackdrop">Cambiar Datos</div>            
             </div>
             @if(session('mensaje_img'))
-                    <div class="alert alert-danger alert-dismissible fade show  m-4" role="alert">
-                    <strong> {{ session('mensaje_img') }} </strong>
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>   
-                @endif
+                <div class="alert alert-danger alert-dismissible fade show  m-4" role="alert">
+                <strong> {{ session('mensaje_img') }} </strong>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>   
+            @endif
         </div>
         <div class="card shadow mb-4">
             <div class="card-header py-3">
@@ -128,7 +128,7 @@ Perfil {{ auth()->user()->name }}
                             </div>
                             <div class="modal-footer">
                             <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-                            <button type="submit" class="btn btn-success">Cambiar Imagen</button>
+                            <button type="submit" class="btn btn-success">Cambiar Datos</button>
                             </div>
                         </form>
                         </div>
