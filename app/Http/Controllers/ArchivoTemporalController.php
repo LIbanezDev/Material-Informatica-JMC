@@ -32,20 +32,20 @@ class ArchivoTemporalController extends Controller
             $user = User::findOrFail($request->subido_por);
             switch($request->tipo_evaluacion){
                 case "Certamen":
-                    $user->certamenes += 1;
+                    $user->certamenes++;
                     $user->puntos += 3;
                     break;
                 case "Laboratorio":
-                    $user->laboratorios += 1;
+                    $user->laboratorios++;
                     $user->puntos += 2;
                     break;
                 case "Control":
-                    $user->controles += 1;
+                    $user->controles++;
                     $user->puntos += 2;
                     break;
                 case "Apunte / Otro":
-                    $user->otros += 1;
-                    $user->puntos += 1;
+                    $user->otros++;
+                    $user->puntos++;
                     break;
             }
             $user->save();
